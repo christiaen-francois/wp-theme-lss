@@ -1,0 +1,232 @@
+{
+  "key": "group_contact_options",
+  "title": "Options de contact",
+  "fields": [
+    {
+      "key": "field_contact_email",
+      "label": "Email général",
+      "name": "contact_email",
+      "type": "email",
+      "instructions": "Adresse email principale pour les contacts",
+      "required": 0,
+      "default_value": "",
+      "placeholder": "contact@exemple.com",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_contact_address",
+      "label": "Adresse postale",
+      "name": "contact_address",
+      "type": "group",
+      "instructions": "Adresse postale complète",
+      "required": 0,
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_contact_address_street",
+          "label": "Rue",
+          "name": "street",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_contact_address_zip",
+          "label": "Code postal",
+          "name": "zip",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_contact_address_city",
+          "label": "Ville",
+          "name": "city",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_contact_address_country",
+          "label": "Pays",
+          "name": "country",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        }
+      ]
+    },
+    {
+      "key": "field_contact_people",
+      "label": "Personnes de contact",
+      "name": "contact_people",
+      "type": "repeater",
+      "instructions": "Ajoutez les personnes de contact avec leur nom et numéro de téléphone",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "collapsed": "",
+      "min": 0,
+      "max": 0,
+      "layout": "table",
+      "button_label": "Ajouter une personne",
+      "sub_fields": [
+        {
+          "key": "field_contact_person_name",
+          "label": "Nom",
+          "name": "name",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_contact_person_phone",
+          "label": "Téléphone",
+          "name": "phone",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        }
+      ]
+    },
+    {
+      "key": "field_social_networks",
+      "label": "Réseaux sociaux",
+      "name": "social_networks",
+      "type": "repeater",
+      "instructions": "Ajoutez les liens vers vos réseaux sociaux",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "collapsed": "",
+      "min": 0,
+      "max": 0,
+      "layout": "table",
+      "button_label": "Ajouter un réseau social",
+      "sub_fields": [
+        {
+          "key": "field_social_network_type",
+          "label": "Réseau social",
+          "name": "type",
+          "type": "select",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "facebook": "Facebook",
+            "twitter": "Twitter",
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "youtube": "Youtube",
+            "vimeo": "Vimeo",
+            "behance": "Behance",
+            "whatsapp": "WhatsApp",
+            "telegram": "Telegram",
+            "envelope": "Email"
+          },
+          "default_value": "",
+          "allow_null": 0,
+          "multiple": 0,
+          "ui": 0,
+          "return_format": "value",
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_social_network_url",
+          "label": "URL",
+          "name": "url",
+          "type": "url",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "https://..."
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "contact-options"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Options de contact pour le site (email, adresse, contacts, réseaux sociaux)",
+  "show_in_rest": 0,
+  "display_title": "",
+  "json_save_path": "parent",
+  "modified": 1735689600
+}
+

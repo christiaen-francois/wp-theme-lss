@@ -1,0 +1,137 @@
+{
+  "key": "group_common_fields",
+  "title": "Champs communs (pour clonage)",
+  "fields": [
+    {
+      "key": "field_common_couleur_fond",
+      "label": "Couleur de fond",
+      "name": "couleur_fond",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "white": "Blanc",
+        "light": "Clair (Cream)",
+        "dark": "Sombre (Brown)",
+        "primary": "Primaire"
+      },
+      "default_value": "light",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "allow_in_bindings": 1,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_common_position_image",
+      "label": "Position de l'image",
+      "name": "position_image",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "left": "Gauche",
+        "right": "Droite",
+        "none": "Aucune image"
+      },
+      "default_value": "right",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 1,
+      "layout": "horizontal",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_common_format_image",
+      "label": "Format de l'image",
+      "name": "format_image",
+      "aria-label": "",
+      "type": "radio",
+      "instructions": "Choisissez le format qui correspond le mieux à votre image",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "portrait": "Portrait (3/4)",
+        "carre": "Carré (1/1)",
+        "paysage": "Paysage (4/3)",
+        "large": "Large (16/9)"
+      },
+      "default_value": "paysage",
+      "return_format": "value",
+      "allow_null": 0,
+      "other_choice": 0,
+      "allow_in_bindings": 1,
+      "layout": "horizontal",
+      "save_other_choice": 0
+    },
+    {
+      "key": "field_common_espacement",
+      "label": "Espacement",
+      "name": "espacement",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Contrôle l'espacement vertical de la section",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "top": "Espacement en haut uniquement",
+        "bottom": "Espacement en bas uniquement",
+        "both": "Espacement en haut et en bas",
+        "none": "Aucun espacement"
+      },
+      "default_value": "top",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "allow_in_bindings": 1,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "none"
+      }
+    ]
+  ],
+  "menu_order": 99,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Groupe de champs communs utilisables via le type clone dans d'autres groupes. Ne pas modifier les clés.",
+  "show_in_rest": 1
+}

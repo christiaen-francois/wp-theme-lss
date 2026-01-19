@@ -1,0 +1,1925 @@
+{
+  "key": "group_692756cf0dc84",
+  "title": "Contenu flexible",
+  "fields": [
+    {
+      "key": "field_692756cfdec12",
+      "label": "Contenu flexible",
+      "name": "flexible_content",
+      "aria-label": "",
+      "type": "flexible_content",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": {
+        "layout_texte_image": {
+          "key": "layout_texte_image",
+          "name": "texte_image",
+          "label": "Texte et Image",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_texte_image_sous_titre",
+              "label": "Sur-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_texte_image_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_texte_image_contenu",
+              "label": "Contenu",
+              "name": "contenu",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 0,
+              "default_value": "",
+              "delay": 0
+            },
+            {
+              "key": "field_texte_image_lien",
+              "label": "Lien",
+              "name": "lien",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 1
+            },
+            {
+              "key": "field_texte_image_image",
+              "label": "Image",
+              "name": "image",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": "",
+              "allow_in_bindings": 1,
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_texte_image_position_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_position_image"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_texte_image_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_texte_image_format_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": [
+                [
+                  {
+                    "field": "field_texte_image_image",
+                    "operator": "!=empty"
+                  }
+                ]
+              ],
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_format_image"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_texte_image_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_separateur": {
+          "key": "layout_separateur",
+          "name": "separateur",
+          "label": "Séparateur Hero",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_separateur_image",
+              "label": "Image de fond",
+              "name": "image_fond",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "Grande image pour le background de la section Hero",
+              "required": 1,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "large",
+              "library": "all",
+              "min_width": 0,
+              "min_height": 0,
+              "min_size": 0,
+              "max_width": 0,
+              "max_height": 0,
+              "max_size": 0,
+              "mime_types": ""
+            },
+            {
+              "key": "field_separateur_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_separateur_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_newsletter": {
+          "key": "layout_newsletter",
+          "name": "newsletter",
+          "label": "Newsletter",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_newsletter_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Recevez nos idées de safaris en Tanzanie",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_newsletter_description",
+              "label": "Description",
+              "name": "description",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "Petit texte descriptif pour l'inscription à la newsletter",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "rows": 3,
+              "default_value": "Inspirez votre prochain voyage : itinéraires sur mesure, meilleures périodes, conseils terrain et nouveautés depuis la Tanzanie. Une newsletter courte, utile, et sans spam.",
+              "new_lines": "",
+              "maxlength": "",
+              "placeholder": ""
+            },
+            {
+              "key": "field_newsletter_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0,
+              "default_value": "primary"
+            },
+            {
+              "key": "field_newsletter_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_galerie": {
+          "key": "layout_galerie",
+          "name": "galerie",
+          "label": "Galerie Photos",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_galerie_photos",
+              "label": "Galerie",
+              "name": "photos",
+              "aria-label": "",
+              "type": "gallery",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "library": "all",
+              "min": 1,
+              "preview_size": "medium",
+              "insert": "append",
+              "max": 0,
+              "min_width": 0,
+              "min_height": 0,
+              "min_size": 0,
+              "max_width": 0,
+              "max_height": 0,
+              "max_size": 0,
+              "mime_types": ""
+            },
+            {
+              "key": "field_galerie_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_galerie_format_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_format_image"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_galerie_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_hero": {
+          "key": "layout_hero",
+          "name": "hero",
+          "label": "Hero",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_hero_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_hero_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_hero_description",
+              "label": "Description",
+              "name": "description",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 0,
+              "default_value": "",
+              "delay": 0
+            },
+            {
+              "key": "field_hero_image_fond",
+              "label": "Image de fond",
+              "name": "image_fond",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "large",
+              "library": "all",
+              "min_width": 0,
+              "min_height": 0,
+              "min_size": 0,
+              "max_width": 0,
+              "max_height": 0,
+              "max_size": 0,
+              "mime_types": ""
+            },
+            {
+              "key": "field_hero_lien",
+              "label": "Lien",
+              "name": "lien",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            },
+            {
+              "key": "field_hero_hauteur",
+              "label": "Hauteur",
+              "name": "hauteur",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Ex: 80vh, 600px",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "80vh",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_hero_overlay",
+              "label": "Opacité overlay",
+              "name": "overlay",
+              "aria-label": "",
+              "type": "number",
+              "instructions": "Valeur entre 0 et 100",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "default_value": 40,
+              "min": 0,
+              "max": 100,
+              "step": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_hero_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0,
+              "default_value": "dark"
+            },
+            {
+              "key": "field_hero_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_temoignages": {
+          "key": "layout_temoignages",
+          "name": "temoignages",
+          "label": "Témoignages",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_temoignages_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_temoignages_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Témoignages",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_temoignages_nombre",
+              "label": "Nombre de témoignages",
+              "name": "nombre_temoignages",
+              "aria-label": "",
+              "type": "number",
+              "instructions": "Nombre de témoignages à afficher (-1 pour tous)",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": -1,
+              "min": -1,
+              "max": "",
+              "step": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_temoignages_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_temoignages_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_services": {
+          "key": "layout_services",
+          "name": "services",
+          "label": "Services",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_services_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_services_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Nos Services",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_services_liste",
+              "label": "Services",
+              "name": "services",
+              "aria-label": "",
+              "type": "repeater",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "min": 1,
+              "max": 0,
+              "rows_per_page": 20,
+              "layout": "table",
+              "button_label": "Ajouter un élément",
+              "collapsed": "",
+              "sub_fields": [
+                {
+                  "key": "field_service_titre",
+                  "label": "Titre",
+                  "name": "titre",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "",
+                  "required": 1,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "parent_repeater": "field_services_liste"
+                },
+                {
+                  "key": "field_service_description",
+                  "label": "Description",
+                  "name": "description",
+                  "aria-label": "",
+                  "type": "wysiwyg",
+                  "instructions": "",
+                  "required": false,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "tabs": "visual",
+                  "toolbar": "basic",
+                  "media_upload": 0,
+                  "default_value": "",
+                  "delay": 0,
+                  "parent_repeater": "field_services_liste"
+                },
+                {
+                  "key": "field_service_image",
+                  "label": "Image",
+                  "name": "image",
+                  "aria-label": "",
+                  "type": "image",
+                  "instructions": "",
+                  "required": false,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array",
+                  "preview_size": "medium",
+                  "library": "all",
+                  "min_width": 0,
+                  "min_height": 0,
+                  "min_size": 0,
+                  "max_width": 0,
+                  "max_height": 0,
+                  "max_size": 0,
+                  "mime_types": "",
+                  "parent_repeater": "field_services_liste"
+                },
+                {
+                  "key": "field_service_icone",
+                  "label": "Icône (si pas d'image)",
+                  "name": "icone",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "Emoji ou code HTML",
+                  "required": false,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "parent_repeater": "field_services_liste"
+                },
+                {
+                  "key": "field_service_lien",
+                  "label": "Lien",
+                  "name": "lien",
+                  "aria-label": "",
+                  "type": "link",
+                  "instructions": "",
+                  "required": false,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array",
+                  "parent_repeater": "field_services_liste"
+                },
+                {
+                  "key": "field_service_format_image",
+                  "label": "Format de l'image",
+                  "name": "format_image",
+                  "aria-label": "",
+                  "type": "radio",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": [
+                    [
+                      {
+                        "field": "field_service_image",
+                        "operator": "!=empty"
+                      }
+                    ]
+                  ],
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "choices": {
+                    "portrait": "Portrait (3/4)",
+                    "carre": "Carré (1/1)",
+                    "paysage": "Paysage (4/3)",
+                    "large": "Large (16/9)"
+                  },
+                  "default_value": "paysage",
+                  "return_format": "value",
+                  "allow_null": 0,
+                  "other_choice": 0,
+                  "layout": "horizontal",
+                  "save_other_choice": 0,
+                  "parent_repeater": "field_services_liste"
+                }
+              ]
+            },
+            {
+              "key": "field_services_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0,
+              "default_value": "white"
+            },
+            {
+              "key": "field_services_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_faq": {
+          "key": "layout_faq",
+          "name": "faq",
+          "label": "FAQ",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_faq_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_faq_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Questions fréquentes",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_faq_questions",
+              "label": "Questions",
+              "name": "questions",
+              "aria-label": "",
+              "type": "relationship",
+              "instructions": "Sélectionnez les questions à afficher et réorganisez-les par glisser-déposer",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "post_type": ["faq"],
+              "taxonomy": "",
+              "filters": ["search"],
+              "elements": ["featured_image"],
+              "min": "",
+              "max": "",
+              "return_format": "id",
+              "bidirectional_target": []
+            },
+            {
+              "key": "field_faq_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_faq_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_cta": {
+          "key": "layout_cta",
+          "name": "cta",
+          "label": "Call to Action",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_sur_titre",
+              "label": "Sur-titre",
+              "name": "sur_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Badge affiché au-dessus du titre (ex: \"Prêt à partir ?\")",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Prêt à partir ?",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_cta_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Créons ensemble votre safari de rêve",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_cta_description",
+              "label": "Description",
+              "name": "description",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 0,
+              "default_value": "Chaque itinéraire est personnalisable. Parlez-nous de vos envies et nous créerons une aventure unique, parfaitement adaptée à vos attentes.",
+              "delay": 0
+            },
+            {
+              "key": "field_cta_lien_principal",
+              "label": "Lien principal",
+              "name": "lien_principal",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            },
+            {
+              "key": "field_cta_lien_secondaire",
+              "label": "Lien secondaire",
+              "name": "lien_secondaire",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            },
+            {
+              "key": "field_cta_image",
+              "label": "Image",
+              "name": "image",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "medium",
+              "library": "all",
+              "min_width": 0,
+              "min_height": 0,
+              "min_size": 0,
+              "max_width": 0,
+              "max_height": 0,
+              "max_size": 0,
+              "mime_types": ""
+            },
+            {
+              "key": "field_cta_position_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_position_image"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_cta_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0,
+              "default_value": "dark"
+            },
+            {
+              "key": "field_cta_format_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": [
+                [
+                  {
+                    "field": "field_cta_image",
+                    "operator": "!=empty"
+                  }
+                ]
+              ],
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_format_image"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_cta_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_equipe": {
+          "key": "layout_equipe",
+          "name": "equipe",
+          "label": "Équipe",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_equipe_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_equipe_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "Notre équipe",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_equipe_membres",
+              "label": "Membres de l'équipe",
+              "name": "membres",
+              "aria-label": "",
+              "type": "post_object",
+              "instructions": "Sélectionnez les membres de l'équipe",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "post_type": [
+                "team"
+              ],
+              "taxonomy": "",
+              "return_format": "id",
+              "multiple": 1,
+              "allow_null": 0,
+              "ui": 1,
+              "ajax": 1
+            },
+            {
+              "key": "field_equipe_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_equipe_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_separateur_lion": {
+          "key": "layout_separateur_lion",
+          "name": "separateur_lion",
+          "label": "Séparateur Lion",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_separateur_lion_couleur",
+              "label": "Couleur",
+              "name": "couleur",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": false,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "dark": "Sombre (Brown)",
+                "primary": "Primaire",
+                "light": "Clair (Cream)"
+              },
+              "default_value": "dark",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": "",
+              "return_format": "value",
+              "create_options": 0,
+              "save_options": 0
+            },
+            {
+              "key": "field_separateur_lion_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "layout_guide_pratique": {
+          "key": "layout_guide_pratique",
+          "name": "guide_pratique",
+          "label": "Guide Pratique",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_guide_pratique_titre",
+              "label": "Titre",
+              "name": "titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Titre principal du guide",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_guide_pratique_sous_titre",
+              "label": "Sous-titre",
+              "name": "sous_titre",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Sous-titre optionnel (affiché au-dessus du titre)",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_guide_pratique_afficher_toc",
+              "label": "Afficher la table des matières",
+              "name": "afficher_table_matiere",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "Affiche la table des matières sticky sur desktop (masquée si moins de 2 sections)",
+              "required": 0,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": 1,
+              "ui": 1,
+              "message": "",
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_guide_pratique_couleur_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_couleur_fond"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0,
+              "default_value": "white"
+            },
+            {
+              "key": "field_guide_pratique_espacement_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_espacement"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            },
+            {
+              "key": "field_guide_pratique_sections",
+              "label": "Sections",
+              "name": "sections",
+              "aria-label": "",
+              "type": "repeater",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": false,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "min": 1,
+              "button_label": "Ajouter une section",
+              "layout": "block",
+              "max": 0,
+              "rows_per_page": 20,
+              "collapsed": "",
+              "sub_fields": [
+                {
+                  "key": "field_guide_section_titre",
+                  "label": "Titre de la section",
+                  "name": "titre",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "Le titre sera utilisé pour générer l'ancre automatiquement",
+                  "required": 1,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "parent_repeater": "field_guide_pratique_sections"
+                },
+                {
+                  "key": "field_guide_section_contenu",
+                  "label": "Contenu",
+                  "name": "contenu",
+                  "aria-label": "",
+                  "type": "wysiwyg",
+                  "instructions": "Contenu de la section avec support des listes et formatage",
+                  "required": 1,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "tabs": "all",
+                  "toolbar": "full",
+                  "media_upload": 0,
+                  "default_value": "",
+                  "delay": 0,
+                  "parent_repeater": "field_guide_pratique_sections"
+                },
+                {
+                  "key": "field_guide_section_image",
+                  "label": "Image",
+                  "name": "image",
+                  "aria-label": "",
+                  "type": "image",
+                  "instructions": "Image optionnelle pour illustrer la section",
+                  "required": 0,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array",
+                  "preview_size": "medium",
+                  "library": "all",
+                  "min_width": 0,
+                  "min_height": 0,
+                  "min_size": 0,
+                  "max_width": 0,
+                  "max_height": 0,
+                  "max_size": 0,
+                  "mime_types": "",
+                  "parent_repeater": "field_guide_pratique_sections"
+                },
+                {
+                  "key": "field_guide_section_position_image",
+                  "label": "Position de l'image",
+                  "name": "position_image",
+                  "aria-label": "",
+                  "type": "select",
+                  "instructions": "Position de l'image par rapport au contenu",
+                  "required": 0,
+                  "conditional_logic": [
+                    [
+                      {
+                        "field": "field_guide_section_image",
+                        "operator": "!empty"
+                      }
+                    ]
+                  ],
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "choices": {
+                    "top": "En haut",
+                    "left": "À gauche",
+                    "right": "À droite",
+                    "none": "Aucune image"
+                  },
+                  "default_value": "none",
+                  "multiple": 0,
+                  "allow_null": 0,
+                  "ui": 0,
+                  "ajax": 0,
+                  "placeholder": "",
+                  "return_format": "value",
+                  "create_options": 0,
+                  "save_options": 0,
+                  "parent_repeater": "field_guide_pratique_sections"
+                },
+                {
+                  "key": "field_guide_section_icone",
+                  "label": "Icône (SVG)",
+                  "name": "icone",
+                  "aria-label": "",
+                  "type": "textarea",
+                  "instructions": "Code SVG pour une icône personnalisée (affichée à côté du titre)",
+                  "required": 0,
+                  "conditional_logic": false,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "rows": 3,
+                  "default_value": "",
+                  "new_lines": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "parent_repeater": "field_guide_pratique_sections"
+                },
+                {
+                  "key": "field_guide_section_format_image",
+                  "label": "Format de l'image",
+                  "name": "format_image",
+                  "aria-label": "",
+                  "type": "radio",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": [
+                    [
+                      {
+                        "field": "field_guide_section_image",
+                        "operator": "!=empty"
+                      }
+                    ]
+                  ],
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "choices": {
+                    "portrait": "Portrait (3/4)",
+                    "carre": "Carré (1/1)",
+                    "paysage": "Paysage (4/3)",
+                    "large": "Large (16/9)"
+                  },
+                  "default_value": "paysage",
+                  "return_format": "value",
+                  "allow_null": 0,
+                  "other_choice": 0,
+                  "layout": "horizontal",
+                  "save_other_choice": 0,
+                  "parent_repeater": "field_guide_pratique_sections"
+                }
+              ]
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "min": "",
+      "max": "",
+      "button_label": "Ajouter un élément"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "show_in_rest": 0,
+  "display_title": "",
+  "json_save_path": "parent",
+  "modified": 1765576963
+}

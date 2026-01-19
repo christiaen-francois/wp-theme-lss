@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs (included in production, but built by CI)
+# Uncomment the line below if you want to build in CI instead of committing dist
+# dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development
+*.local
+.localwp/
+
+# Cache
+.cache/
+*.cache
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Package manager locks (keep one, ignore the other)
+# yarn.lock
+# pnpm-lock.yaml
+
+# WordPress uploads (if accidentally placed in theme)
+uploads/
+
+# Backups
+*.bak
+*.backup

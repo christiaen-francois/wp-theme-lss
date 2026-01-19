@@ -1,0 +1,44 @@
+{
+  "key": "group_faq",
+  "title": "FAQ",
+  "fields": [
+    {
+      "key": "field_faq_reponse",
+      "label": "Réponse",
+      "name": "reponse",
+      "type": "wysiwyg",
+      "required": 1,
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "instructions": "Réponse à la question (sans possibilité d'ajouter des images)",
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "faq"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "display_title": "",
+  "json_save_path": "parent",
+  "modified": 1764186000
+}
+

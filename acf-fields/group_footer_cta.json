@@ -1,0 +1,148 @@
+{
+  "key": "group_footer_cta",
+  "title": "CTA du Footer",
+  "fields": [
+    {
+      "key": "field_footer_cta_sur_titre",
+      "label": "Sur-titre",
+      "name": "footer_cta_sur_titre",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Badge affiché au-dessus du titre (ex: \"Prêt à partir ?\")",
+      "required": 0,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Prêt à partir ?",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_footer_cta_titre",
+      "label": "Titre",
+      "name": "footer_cta_titre",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Créons ensemble votre safari de rêve",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_footer_cta_description",
+      "label": "Description",
+      "name": "footer_cta_description",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": false,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "rows": 3,
+      "default_value": "Chaque itinéraire est personnalisable. Parlez-nous de vos envies et nous créerons une aventure unique.",
+      "new_lines": "br",
+      "maxlength": "",
+      "placeholder": ""
+    },
+    {
+      "key": "field_footer_cta_lien",
+      "label": "Lien principal (Demander un devis)",
+      "name": "footer_cta_lien",
+      "aria-label": "",
+      "type": "link",
+      "instructions": "Lien vers la page de contact ou formulaire de devis",
+      "required": false,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array"
+    },
+    {
+      "key": "field_footer_cta_telephone",
+      "label": "Numéro de téléphone affiché",
+      "name": "footer_cta_telephone",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Numéro de téléphone à afficher dans le CTA (ex: +255 123 456 789)",
+      "required": false,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "+255 123 456 789",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_footer_cta_image",
+      "label": "Image de fond",
+      "name": "footer_cta_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Image de fond optionnelle pour le CTA",
+      "required": false,
+      "conditional_logic": false,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "min_width": 0,
+      "min_height": 0,
+      "min_size": 0,
+      "max_width": 0,
+      "max_height": 0,
+      "max_size": 0,
+      "mime_types": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "contact-options"
+      }
+    ]
+  ],
+  "menu_order": 10,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Configuration du Call-to-Action affiché dans le footer",
+  "show_in_rest": 0,
+  "display_title": "",
+  "json_save_path": "parent",
+  "modified": 1737331200
+}

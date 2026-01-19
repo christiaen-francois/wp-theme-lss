@@ -1,0 +1,615 @@
+---
+alwaysApply: true
+---
+
+# WordPress & Tailwind - Règles de développement professionnel (Awwwards-ready)
+
+## 🎯 Philosophie générale
+
+- **Performance first** : Chaque décision doit être évaluée sous l'angle performance
+- **Code maintenable** : Structure claire, conventions cohérentes, documentation
+- **Accessibilité** : WCAG 2.1 AA minimum
+- **Mobile-first** : Design et développement mobile-first, desktop en enhancement
+- **Progressive enhancement** : Le site fonctionne sans JS, JS améliore l'expérience
+
+---
+
+## 📁 Architecture WordPress
+
+### Structure des fichiers
+
+```
+theme/
+├── inc/
+│   ├── Classes/          # Classes PHP (PSR-4)
+│   ├── Traits/            # Traits réutilisables
+│   ├── Functions/         # Fonctions utilitaires
+│   └── Hooks/             # Actions et filters
+├── parts/                 # Composants réutilisables PHP
+│   ├── navigation.php
+│   ├── hero.php
+│   └── ...
+├── templates/             # Templates personnalisés
+├── blocks/                # Gutenberg blocks (si utilisé)
+└── assets/
+    ├── js/
+    │   ├── main.js        # Point d'entrée
+    │   ├── modules/       # Modules JS séparés
+    │   └── utils/         # Utilitaires JS
+    └── css/
+        └── main.css       # Point d'entrée Tailwind
+```
+
+### Conventions de nommage PHP
+
+- **Classes** : PascalCase, namespace `NL_THEME\Inc\Classes`
+- **Fonctions** : snake*case avec préfixe `nl*`(ex:`nl_get_image_src()`)
+- **Constantes** : UPPER*SNAKE_CASE avec préfixe `NL_THEME*`
+- **Variables** : camelCase pour les variables, snake_case pour les fonctions WordPress
+- **Fichiers** : PascalCase pour les classes, kebab-case pour les templates
+
+```php
+// ✅ BON
+class Theme_Setup {
+    const MAX_IMAGE_SIZE = 1920;
+
+    public function enqueue_assets() {
+        $asset_url = nl_get_asset_url('main.js');
+    }
+}
+
+// ❌ MAUVAIS
+class theme_setup {
+    const maxImageSize = 1920;
+
+    public function EnqueueAssets() {
+        $assetUrl = getAssetUrl('main.js');
+    }
+}
+```
+
+### Patterns WordPress
+
+- **Singleton** : Pour les classes principales (Theme, Assets, etc.)
+- **Hooks** : Utiliser les hooks WordPress, éviter les modifications directes du core
+- **Transients** : Pour le cache des requêtes coûteuses
+- **Nonces** : Pour toutes les actions utilisateur
+- **Sanitization** : Toujours sanitizer les entrées utilisateur
+- **Escaping** : Toujours échapper les sorties
+
+```php
+// ✅ BON - Utilisation des hooks
+add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+add_filter('excerpt_length', [$this, 'custom_excerpt_length']);
+
+// ✅ BON - Sanitization et escaping
+$user_input = sanitize_text_field($_POST['name']);
+echo esc_html($user_input);
+echo esc_url($link);
+echo esc_attr($attribute);
+```
+
+---
+
+## 🎨 Tailwind CSS - Conventions avancées
+
+### Structure des classes
+
+**Ordre recommandé** (pour lisibilité) :
+
+1. Layout (display, position, top/right/bottom/left, z-index)
+2. Flexbox/Grid (flex, grid, gap)
+3. Spacing (margin, padding)
+4. Sizing (width, height, max-width, etc.)
+5. Typography (font, text, line-height, letter-spacing)
+6. Visual (background, border, shadow, opacity)
+7. Misc (cursor, pointer-events, user-select)
+
+```html
+<!-- ✅ BON - Ordre logique -->
+<div
+  class="relative z-10 flex items-center gap-4 p-6 w-full max-w-5xl text-lg font-semibold bg-neutral-900 border border-neutral-800 rounded-lg shadow-xl"
+>
+  <!-- ❌ MAUVAIS - Désordonné -->
+  <div
+    class="bg-neutral-900 flex p-6 relative text-lg gap-4 z-10 items-center"
+  ></div>
+</div>
+```
+
+### Utilisation des composants Tailwind
+
+**Préférer les classes utilitaires** sauf pour les patterns répétitifs :
+
+```html
+<!-- ✅ BON - Classes utilitaires pour cas unique -->
+<button
+  class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+>
+  <!-- ✅ BON - @layer components pour patterns répétitifs -->
+  <!-- Dans main.css -->
+  @layer components { .btn-primary { @apply px-6 py-3 bg-primary text-white
+  rounded-lg hover:bg-primary/90 transition-colors; } }
+</button>
+```
+
+### Design tokens personnalisés
+
+**Toujours étendre le thème Tailwind** plutôt que d'utiliser des valeurs arbitraires :
+
+```javascript
+// tailwind.config.cjs
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        50: '#...',
+        500: '#...',
+        900: '#...',
+      },
+      neutral: {
+        50: '#fafafa',
+        950: '#0a0a0a',
+      }
+    },
+    fontFamily: {
+      sans: ['Inter', 'system-ui', 'sans-serif'],
+      display: ['Space Grotesk', 'sans-serif'],
+    },
+    spacing: {
+      '18': '4.5rem',
+      '88': '22rem',
+    },
+    animation: {
+      'fade-in': 'fadeIn 0.6s ease-out',
+      'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+    }
+  }
+}
+```
+
+```html
+<!-- ✅ BON - Utiliser les tokens -->
+<div class="bg-primary-500 text-neutral-50 font-display">
+  <!-- ❌ MAUVAIS - Valeurs arbitraires -->
+  <div class="bg-[#ff6b6b] text-[#fafafa] font-['Space_Grotesk']"></div>
+</div>
+```
+
+### Responsive design
+
+**Mobile-first obligatoire** :
+
+```html
+<!-- ✅ BON - Mobile-first -->
+<div class="text-sm md:text-base lg:text-lg xl:text-xl">
+  <div class="p-4 md:p-6 lg:p-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- ❌ MAUVAIS - Desktop-first -->
+      <div class="text-xl lg:text-lg md:text-base text-sm"></div>
+    </div>
+  </div>
+</div>
+```
+
+### Dark mode et thèmes
+
+```html
+<!-- Utiliser les variants dark: -->
+<div
+  class="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50"
+></div>
+```
+
+---
+
+## ⚡ Performance - Règles strictes
+
+### Images
+
+- **Toujours utiliser `wp_get_attachment_image()`** avec les bonnes tailles
+- **Lazy loading natif** : `loading="lazy"` (sauf above-the-fold)
+- **Formats modernes** : WebP avec fallback, AVIF si supporté
+- **Responsive images** : `srcset` et `sizes` automatiques
+- **Aspect ratio** : Utiliser `aspect-ratio` CSS pour éviter le layout shift
+
+```php
+// ✅ BON
+echo wp_get_attachment_image(
+    $image_id,
+    'large',
+    false,
+    [
+        'class' => 'w-full h-auto',
+        'loading' => 'lazy',
+        'decoding' => 'async',
+    ]
+);
+```
+
+```html
+<!-- ✅ BON - Aspect ratio pour éviter layout shift -->
+<div class="aspect-video bg-neutral-900">
+  <img src="..." class="w-full h-full object-cover" loading="lazy" />
+</div>
+```
+
+### JavaScript
+
+- **Code splitting** : Séparer les modules par fonctionnalité
+- **Lazy loading** : Charger les modules non-critiques à la demande
+- **Debounce/Throttle** : Pour les événements scroll/resize
+- **RequestAnimationFrame** : Pour les animations fluides
+- **Pas de jQuery** : Utiliser le vanilla JS moderne
+
+```javascript
+// ✅ BON - Code splitting
+const initHeavyFeature = async () => {
+  const { HeavyModule } = await import("./modules/HeavyModule");
+  HeavyModule.init();
+};
+
+// ✅ BON - Debounce pour scroll
+import { debounce } from "./utils/debounce";
+
+window.addEventListener("scroll", debounce(handleScroll, 100));
+```
+
+### CSS
+
+- **PurgeCSS** : Configuré correctement dans Tailwind
+- **Critical CSS** : Inline pour above-the-fold
+- **Pas de CSS inline** : Sauf pour les valeurs dynamiques critiques
+- **Utiliser les custom properties** : Pour les valeurs dynamiques
+
+```css
+/* ✅ BON - Custom properties pour valeurs dynamiques */
+:root {
+  --header-height: 80px;
+}
+
+header {
+  height: var(--header-height);
+}
+```
+
+### Fonts
+
+- **Variable fonts** : Préférer les fonts variables
+- **Preload** : Pour les fonts critiques
+- **font-display: swap** : Toujours
+- **Subset** : Charger uniquement les caractères nécessaires
+
+```php
+// ✅ BON - Preload des fonts critiques
+add_action('wp_head', function() {
+    echo '<link rel="preload" href="' . get_theme_file_uri('assets/fonts/inter.woff2') . '" as="font" type="font/woff2" crossorigin>';
+}, 1);
+```
+
+---
+
+## 🎭 Animations et transitions
+
+### GSAP - Bonnes pratiques
+
+- **ScrollTrigger** : Utiliser pour les animations au scroll
+- **Performance** : Préférer `transform` et `opacity` (GPU-accelerated)
+- **Will-change** : Utiliser avec parcimonie, retirer après animation
+- **Cleanup** : Toujours nettoyer les ScrollTriggers au unmount
+
+```javascript
+// ✅ BON - Animation performante
+gsap.from(element, {
+  autoAlpha: 0, // opacity + visibility
+  y: 40, // transform (GPU)
+  duration: 1,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: element,
+    start: "top 80%",
+    toggleActions: "play none none reverse",
+  },
+  onComplete: () => {
+    element.style.willChange = "auto"; // Cleanup
+  },
+});
+```
+
+### Lenis (Smooth scroll)
+
+- **Toujours synchroniser avec ScrollTrigger** : `lenis.on('scroll', ScrollTrigger.update)`
+- **Pause pendant les transitions** : `lenis.stop()` / `lenis.start()`
+- **Configuration** : Ajuster `lerp` selon le projet (0.1-0.15 généralement)
+
+```javascript
+// ✅ BON - Synchronisation Lenis/ScrollTrigger
+lenis.on("scroll", ScrollTrigger.update);
+
+// ✅ BON - Pause pendant transition Barba
+barba.hooks.beforeLeave(() => {
+  lenis.stop();
+});
+
+barba.hooks.afterEnter(() => {
+  lenis.start();
+  window.scrollTo(0, 0);
+});
+```
+
+### Barba.js (Page transitions)
+
+- **Namespace** : Toujours définir un namespace unique par page
+- **Cleanup** : Nettoyer les event listeners et animations au leave
+- **Scroll position** : Réinitialiser après transition
+- **Performance** : Précharger les pages au hover (optionnel)
+
+```javascript
+// ✅ BON - Transition avec cleanup
+barba.init({
+  transitions: [
+    {
+      name: "default",
+      async leave({ current }) {
+        // Cleanup animations
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+        // Animation de sortie
+        await gsap.to(current.container, {
+          opacity: 0,
+          duration: 0.6,
+        });
+      },
+      async enter({ next }) {
+        // Réinitialiser scroll
+        window.scrollTo(0, 0);
+
+        // Réinitialiser animations
+        initScrollAnimations();
+      },
+    },
+  ],
+});
+```
+
+---
+
+## ♿ Accessibilité
+
+### HTML sémantique
+
+```html
+<!-- ✅ BON - Structure sémantique -->
+<header role="banner">
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="/">Accueil</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main role="main">
+  <article>
+    <h1>Titre de l'article</h1>
+  </article>
+</main>
+
+<footer role="contentinfo"></footer>
+```
+
+### ARIA et navigation clavier
+
+- **Skip links** : Toujours ajouter un lien "Aller au contenu"
+- **Focus visible** : Styles de focus clairs et visibles
+- **Landmarks** : Utiliser les rôles ARIA appropriés
+- **Labels** : Toujours labeliser les éléments interactifs
+
+```html
+<!-- ✅ BON - Skip link -->
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white"
+>
+  Aller au contenu
+</a>
+
+<!-- ✅ BON - Focus visible -->
+button:focus-visible { @apply outline-2 outline-offset-2 outline-primary; }
+```
+
+### Contraste et couleurs
+
+- **WCAG AA** : Minimum 4.5:1 pour le texte normal, 3:1 pour le texte large
+- **Pas de couleur seule** : Ne pas utiliser uniquement la couleur pour transmettre l'information
+- **Focus states** : Toujours visibles
+
+---
+
+## 🔧 Code quality
+
+### PHP
+
+- **PSR-12** : Standards de codage PHP
+- **Type hints** : Utiliser les type hints partout
+- **Docblocks** : Documenter les fonctions publiques
+- **DRY** : Don't Repeat Yourself
+- **Single Responsibility** : Une classe = une responsabilité
+
+```php
+// ✅ BON - Type hints et docblocks
+/**
+ * Enqueue les assets du thème
+ *
+ * @param string $handle Le handle de l'asset
+ * @param string $src    L'URL source
+ * @param array  $deps   Les dépendances
+ * @return void
+ */
+public function enqueue_asset(string $handle, string $src, array $deps = []): void {
+    wp_enqueue_script($handle, $src, $deps, NL_THEME_VERSION, true);
+}
+```
+
+### JavaScript
+
+- **ES6+** : Utiliser les syntaxes modernes
+- **Modules** : Tout en modules ES6
+- **Const/Let** : Jamais de `var`
+- **Arrow functions** : Pour les callbacks courts
+- **Async/Await** : Préférer à Promise.then()
+- **Error handling** : Toujours gérer les erreurs
+
+```javascript
+// ✅ BON - Code moderne
+const fetchData = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Network error");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+};
+```
+
+### Commentaires
+
+- **Pourquoi, pas quoi** : Expliquer la raison, pas l'action
+- **TODOs** : Marquer les TODOs avec contexte et priorité
+- **Complexité** : Commenter les algorithmes complexes
+
+```javascript
+// ✅ BON - Commentaire utile
+// Utiliser requestAnimationFrame pour synchroniser avec le refresh rate
+// du navigateur et éviter les janky scrolls
+requestAnimationFrame(updateScroll);
+
+// ❌ MAUVAIS - Commentaire inutile
+// Appelle requestAnimationFrame
+requestAnimationFrame(updateScroll);
+```
+
+---
+
+## 🧪 Testing et validation
+
+### Avant commit
+
+- **Linter** : PHPCS, ESLint configurés
+- **Build** : Vérifier que `npm run build` fonctionne
+- **Validation** : HTML, CSS valides
+- **Performance** : Lighthouse score > 90
+- **Accessibilité** : axe DevTools, aucun warning
+
+### Checklist de déploiement
+
+- [ ] Tous les assets compilés (`npm run build`)
+- [ ] Manifest Vite généré
+- [ ] Images optimisées
+- [ ] Fonts préchargées
+- [ ] Cache configuré
+- [ ] Analytics configurés (si nécessaire)
+- [ ] 404 et erreurs gérées
+- [ ] Mobile testé
+- [ ] Cross-browser testé (Chrome, Firefox, Safari)
+
+---
+
+## 📝 Conventions spécifiques Awwwards
+
+### Performance cibles
+
+- **Lighthouse Performance** : > 95
+- **First Contentful Paint** : < 1.5s
+- **Largest Contentful Paint** : < 2.5s
+- **Time to Interactive** : < 3.5s
+- **Cumulative Layout Shift** : < 0.1
+- **Total Bundle Size** : < 200KB (gzipped)
+
+### Animations
+
+- **60fps** : Toutes les animations doivent tourner à 60fps
+- **Respect prefers-reduced-motion** : Toujours vérifier
+- **Performance budget** : Max 16ms par frame
+
+```css
+/* ✅ BON - Respect de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+### Micro-interactions
+
+- **Feedback immédiat** : Tous les éléments interactifs doivent avoir un feedback
+- **Transitions fluides** : Utiliser des easing functions naturelles
+- **Hover states** : Toujours définis pour desktop
+
+---
+
+## 🚫 Anti-patterns à éviter
+
+### PHP
+
+```php
+// ❌ MAUVAIS - Requête dans la boucle
+while (have_posts()) {
+    the_post();
+    $meta = get_post_meta(get_the_ID(), 'custom_field', true); // N+1 queries
+}
+
+// ✅ BON - Requête unique
+$posts = get_posts(['meta_key' => 'custom_field']);
+foreach ($posts as $post) {
+    // ...
+}
+```
+
+### JavaScript
+
+```javascript
+// ❌ MAUVAIS - Manipulation DOM excessive
+for (let i = 0; i < 1000; i++) {
+  element.innerHTML += "<div>" + i + "</div>";
+}
+
+// ✅ BON - Batch DOM updates
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 1000; i++) {
+  const div = document.createElement("div");
+  div.textContent = i;
+  fragment.appendChild(div);
+}
+element.appendChild(fragment);
+```
+
+### CSS
+
+```html
+<!-- ❌ MAUVAIS - Styles inline (sauf valeurs dynamiques) -->
+<div style="color: red; padding: 20px;">
+  <!-- ❌ MAUVAIS - !important (sauf cas très spécifiques) -->
+  .text { color: red !important; }
+</div>
+```
+
+---
+
+## 📚 Ressources et références
+
+- **WordPress Codex** : https://codex.wordpress.org/
+- **Tailwind Docs** : https://tailwindcss.com/docs
+- **GSAP Docs** : https://greensock.com/docs/
+- **Web.dev** : https://web.dev/
+- **A11y Project** : https://www.a11yproject.com/
+- **Can I Use** : https://caniuse.com/
+
+---
+
+## 🎯 Règle d'or
+
+> **"Si tu doutes, choisis la solution la plus performante et la plus maintenable, pas la plus rapide à coder."**

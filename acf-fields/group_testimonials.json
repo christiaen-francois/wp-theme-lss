@@ -1,0 +1,93 @@
+{
+  "key": "group_testimonials",
+  "title": "Témoignages",
+  "fields": [
+    {
+      "key": "field_testimonial_nom",
+      "label": "Nom",
+      "name": "nom",
+      "type": "text",
+      "required": 1,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    },
+    {
+      "key": "field_testimonial_role",
+      "label": "Rôle / Fonction",
+      "name": "role",
+      "type": "text",
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    },
+    {
+      "key": "field_testimonial_photo",
+      "label": "Photo",
+      "name": "photo",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "thumbnail",
+      "library": "all",
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    },
+    {
+      "key": "field_testimonial_citation",
+      "label": "Citation",
+      "name": "citation",
+      "type": "textarea",
+      "required": 1,
+      "rows": 3,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    },
+    {
+      "key": "field_testimonial_note",
+      "label": "Note",
+      "name": "note",
+      "type": "number",
+      "min": 1,
+      "max": 5,
+      "default_value": 5,
+      "instructions": "Note sur 5 étoiles",
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "testimonial"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "display_title": "",
+  "json_save_path": "parent",
+  "modified": 1764186000
+}
+

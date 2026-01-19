@@ -1,0 +1,236 @@
+{
+  "key": "group_itineraire",
+  "title": "Itinéraire - Détails",
+  "fields": [
+    {
+      "key": "field_itineraire_sous_titre",
+      "label": "Sous-titre",
+      "name": "sous_titre",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Ex: \"L'essence du safari tanzanien\"",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_itineraire_duree",
+      "label": "Durée",
+      "name": "duree",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Ex: \"7 jours\", \"10 jours\"",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "7 jours",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_itineraire_highlight",
+      "label": "Highlight",
+      "name": "highlight",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Point fort affiché en badge. Ex: \"Parcs emblématiques\", \"Safari + Plage\"",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "Parcs emblématiques",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_itineraire_destinations",
+      "label": "Destinations",
+      "name": "destinations",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Liste des pays/régions. Ex: \"Botswana, Zimbabwe\"",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "34",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "Tanzanie",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_itineraire_jours",
+      "label": "Programme jour par jour",
+      "name": "jours",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Détaillez chaque jour de l'itinéraire",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "pagination": 0,
+      "min": 1,
+      "max": 0,
+      "collapsed": "field_itineraire_jour_label",
+      "button_label": "Ajouter un jour",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_itineraire_jour_label",
+          "label": "Label",
+          "name": "label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Ex: \"Jour 1\", \"Jours 8-11\"",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "25",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "Jour 1",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_itineraire_jour_titre",
+          "label": "Titre",
+          "name": "titre",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Titre de cette étape",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "35",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "Arrivée en Tanzanie",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_itineraire_jour_lieu",
+          "label": "Lieu / Trajet",
+          "name": "lieu",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Ex: \"Aéroport Kilimanjaro → Arusha\"",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "40",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "Aéroport → Lodge",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_itineraire_jour_description",
+          "label": "Description",
+          "name": "description",
+          "aria-label": "",
+          "type": "textarea",
+          "instructions": "Description détaillée de la journée",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "rows": 3,
+          "placeholder": "",
+          "new_lines": ""
+        }
+      ]
+    },
+    {
+      "key": "field_itineraire_galerie",
+      "label": "Galerie photos",
+      "name": "galerie",
+      "aria-label": "",
+      "type": "gallery",
+      "instructions": "Sélectionnez les images pour le carrousel (10 images recommandées)",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "library": "all",
+      "min": 0,
+      "max": 20,
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "jpg,jpeg,png,webp",
+      "insert": "append",
+      "preview_size": "medium"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "itineraire"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Champs pour les itinéraires de safari",
+  "show_in_rest": 0
+}

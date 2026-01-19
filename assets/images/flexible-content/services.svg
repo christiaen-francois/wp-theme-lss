@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="#f5f5f4"/>
+
+  <!-- Header -->
+  <g transform="translate(120, 12)">
+    <!-- Sur-titre -->
+    <rect x="40" y="0" width="80" height="12" rx="6" fill="#fcbb46" opacity="0.2"/>
+    <rect x="50" y="3" width="60" height="6" rx="2" fill="#fcbb46"/>
+    <!-- Title -->
+    <rect x="30" y="18" width="100" height="10" rx="2" fill="#292524"/>
+  </g>
+
+  <!-- Service cards grid (3 columns) -->
+  <g transform="translate(20, 45)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="115" height="120" rx="8" fill="#faf9f8" stroke="#e7e5e4" stroke-width="1"/>
+    <!-- Image -->
+    <rect x="0" y="0" width="115" height="55" rx="8" fill="#e7e5e4"/>
+    <rect x="0" y="47" width="115" height="8" fill="#faf9f8"/>
+    <circle cx="25" cy="20" r="8" fill="#d6d3d1"/>
+    <path d="M10 45 L35 30 L60 42 L85 25 L105 38 L105 47 L10 47 Z" fill="#d6d3d1"/>
+    <!-- Content -->
+    <rect x="10" y="62" width="90" height="8" rx="1" fill="#292524"/>
+    <rect x="10" y="76" width="95" height="4" rx="1" fill="#78716c"/>
+    <rect x="10" y="84" width="85" height="4" rx="1" fill="#78716c"/>
+    <!-- Link -->
+    <rect x="10" y="100" width="55" height="5" rx="1" fill="#fcbb46"/>
+    <path d="M70 102 L76 102 M74 99 L77 102 L74 105" stroke="#fcbb46" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Card 2 -->
+    <rect x="122" y="0" width="115" height="120" rx="8" fill="#faf9f8" stroke="#e7e5e4" stroke-width="1"/>
+    <rect x="122" y="0" width="115" height="55" rx="8" fill="#e7e5e4"/>
+    <rect x="122" y="47" width="115" height="8" fill="#faf9f8"/>
+    <circle cx="147" cy="20" r="8" fill="#d6d3d1"/>
+    <path d="M132 45 L157 30 L182 42 L207 25 L227 38 L227 47 L132 47 Z" fill="#d6d3d1"/>
+    <rect x="132" y="62" width="90" height="8" rx="1" fill="#292524"/>
+    <rect x="132" y="76" width="95" height="4" rx="1" fill="#78716c"/>
+    <rect x="132" y="84" width="85" height="4" rx="1" fill="#78716c"/>
+    <rect x="132" y="100" width="55" height="5" rx="1" fill="#fcbb46"/>
+    <path d="M192 102 L198 102 M196 99 L199 102 L196 105" stroke="#fcbb46" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Card 3 -->
+    <rect x="244" y="0" width="115" height="120" rx="8" fill="#faf9f8" stroke="#e7e5e4" stroke-width="1"/>
+    <rect x="244" y="0" width="115" height="55" rx="8" fill="#e7e5e4"/>
+    <rect x="244" y="47" width="115" height="8" fill="#faf9f8"/>
+    <circle cx="269" cy="20" r="8" fill="#d6d3d1"/>
+    <path d="M254 45 L279 30 L304 42 L329 25 L349 38 L349 47 L254 47 Z" fill="#d6d3d1"/>
+    <rect x="254" y="62" width="90" height="8" rx="1" fill="#292524"/>
+    <rect x="254" y="76" width="95" height="4" rx="1" fill="#78716c"/>
+    <rect x="254" y="84" width="85" height="4" rx="1" fill="#78716c"/>
+    <rect x="254" y="100" width="55" height="5" rx="1" fill="#fcbb46"/>
+    <path d="M314 102 L320 102 M318 99 L321 102 L318 105" stroke="#fcbb46" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#78716c">Services (Grille de cartes)</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="#f5f5f4"/>
+
+  <!-- Header -->
+  <g transform="translate(100, 10)">
+    <!-- Sur-titre -->
+    <rect x="60" y="0" width="80" height="12" rx="6" fill="#fcbb46" opacity="0.2"/>
+    <rect x="70" y="3" width="60" height="6" rx="2" fill="#fcbb46"/>
+    <!-- Title -->
+    <rect x="40" y="18" width="120" height="10" rx="2" fill="#292524"/>
+  </g>
+
+  <!-- Two column layout -->
+  <g transform="translate(20, 42)">
+    <!-- Left sidebar: Table of contents -->
+    <rect x="0" y="0" width="90" height="135" rx="6" fill="#ffffff" stroke="#e7e5e4" stroke-width="1"/>
+    <rect x="10" y="12" width="55" height="7" rx="1" fill="#292524"/>
+
+    <!-- TOC items -->
+    <rect x="10" y="30" width="70" height="5" rx="1" fill="#fcbb46"/>
+    <rect x="10" y="42" width="65" height="5" rx="1" fill="#78716c"/>
+    <rect x="10" y="54" width="60" height="5" rx="1" fill="#78716c"/>
+    <rect x="10" y="66" width="70" height="5" rx="1" fill="#78716c"/>
+    <rect x="10" y="78" width="55" height="5" rx="1" fill="#78716c"/>
+    <rect x="10" y="90" width="65" height="5" rx="1" fill="#78716c"/>
+
+    <!-- Sticky indicator -->
+    <rect x="75" y="5" width="8" height="8" rx="2" fill="#fcbb46" opacity="0.3"/>
+    <path d="M77 9 L81 9 M79 7 L79 11" stroke="#fcbb46" stroke-width="1" stroke-linecap="round"/>
+
+    <!-- Right content area -->
+    <g transform="translate(100, 0)">
+      <!-- Section 1 -->
+      <g>
+        <!-- Section title with icon -->
+        <rect x="0" y="0" width="20" height="20" rx="4" fill="#fcbb46" opacity="0.2"/>
+        <rect x="5" y="7" width="10" height="6" rx="1" fill="#fcbb46"/>
+        <rect x="28" y="4" width="120" height="10" rx="2" fill="#292524"/>
+
+        <!-- Content -->
+        <rect x="0" y="22" width="260" height="5" rx="1" fill="#78716c"/>
+        <rect x="0" y="32" width="250" height="5" rx="1" fill="#78716c"/>
+        <rect x="0" y="42" width="230" height="5" rx="1" fill="#78716c"/>
+      </g>
+
+      <!-- Section 2 with image -->
+      <g transform="translate(0, 60)">
+        <!-- Section title -->
+        <rect x="0" y="0" width="20" height="20" rx="4" fill="#fcbb46" opacity="0.2"/>
+        <rect x="5" y="7" width="10" height="6" rx="1" fill="#fcbb46"/>
+        <rect x="28" y="4" width="100" height="10" rx="2" fill="#292524"/>
+
+        <!-- Content with image on right -->
+        <rect x="0" y="22" width="160" height="5" rx="1" fill="#78716c"/>
+        <rect x="0" y="32" width="150" height="5" rx="1" fill="#78716c"/>
+        <rect x="0" y="42" width="155" height="5" rx="1" fill="#78716c"/>
+        <rect x="0" y="52" width="140" height="5" rx="1" fill="#78716c"/>
+
+        <!-- Small image -->
+        <rect x="175" y="20" width="85" height="50" rx="4" fill="#e7e5e4"/>
+        <circle cx="195" cy="35" r="8" fill="#d6d3d1"/>
+        <path d="M180 58 L200 45 L220 55 L240 40 L255 52 L255 65 L180 65 Z" fill="#d6d3d1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#78716c">Guide Pratique (TOC + Sections)</text>
+</svg>

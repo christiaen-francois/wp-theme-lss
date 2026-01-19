@@ -1,0 +1,254 @@
+{
+  "key": "group_page_itineraires",
+  "title": "Page Itinéraires",
+  "fields": [
+    {
+      "key": "field_page_itineraires_header_accordion",
+      "label": "En-tête",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 1,
+      "multi_expand": 0,
+      "endpoint": 0
+    },
+    {
+      "key": "field_page_itineraires_sur_titre",
+      "label": "Sur-titre",
+      "name": "sur_titre",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Badge affiché au-dessus du titre (ex: \"Nos itinéraires\")",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "Nos itinéraires",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_page_itineraires_extrait",
+      "label": "Extrait / Description",
+      "name": "extrait",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Texte affiché sous le titre dans le hero",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_page_itineraires_background_image",
+      "label": "Image de fond",
+      "name": "background_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Image de fond pour le hero",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "jpg,jpeg,png,webp",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_page_itineraires_stats_accordion",
+      "label": "Statistiques du header",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 0,
+      "multi_expand": 0,
+      "endpoint": 0
+    },
+    {
+      "key": "field_page_itineraires_stat_duree",
+      "label": "Statistique durée",
+      "name": "stat_duree",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Ex: \"7-12\" pour afficher 7-12 Jours",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "7-12",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_page_itineraires_stat_personnalisation",
+      "label": "Statistique personnalisation",
+      "name": "stat_personnalisation",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Ex: \"100%\" pour afficher 100% Sur mesure",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "100%",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_page_itineraires_selection_accordion",
+      "label": "Sélection des itinéraires",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 0,
+      "multi_expand": 0,
+      "endpoint": 0
+    },
+    {
+      "key": "field_page_itineraires_selection",
+      "label": "Itinéraires à afficher",
+      "name": "itineraires_selection",
+      "aria-label": "",
+      "type": "relationship",
+      "instructions": "Sélectionnez et ordonnez les itinéraires à afficher sur cette page",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": [
+        "itineraire"
+      ],
+      "taxonomy": "",
+      "filters": [
+        "search"
+      ],
+      "elements": [
+        "featured_image"
+      ],
+      "min": "",
+      "max": "",
+      "return_format": "id",
+      "bidirectional_target": []
+    },
+    {
+      "key": "field_page_itineraires_flexible_accordion",
+      "label": "Contenu flexible",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 0,
+      "multi_expand": 0,
+      "endpoint": 0
+    },
+    {
+      "key": "field_page_itineraires_flexible_clone",
+      "label": "",
+      "name": "",
+      "aria-label": "",
+      "type": "clone",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "clone": [
+        "group_692756cf0dc84"
+      ],
+      "display": "seamless",
+      "layout": "block",
+      "prefix_label": 0,
+      "prefix_name": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "templates/page-itineraires.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content"
+  ],
+  "active": true,
+  "description": "Champs pour la page des itinéraires de safari",
+  "show_in_rest": 0
+}

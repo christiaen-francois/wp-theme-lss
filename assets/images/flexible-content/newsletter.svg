@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" fill="none">
+  <rect width="400" height="200" fill="#f5f5f4"/>
+
+  <!-- Newsletter section background -->
+  <rect x="20" y="30" width="360" height="130" rx="8" fill="#fcbb46"/>
+
+  <!-- Title -->
+  <rect x="100" y="50" width="200" height="12" rx="2" fill="#ffffff"/>
+
+  <!-- Description -->
+  <rect x="70" y="72" width="260" height="6" rx="1" fill="#ffffff" opacity="0.8"/>
+  <rect x="90" y="84" width="220" height="6" rx="1" fill="#ffffff" opacity="0.8"/>
+
+  <!-- Form row -->
+  <g transform="translate(80, 105)">
+    <!-- Email input -->
+    <rect x="0" y="0" width="160" height="32" rx="6" fill="#ffffff"/>
+    <rect x="12" y="12" width="80" height="8" rx="1" fill="#d6d3d1"/>
+
+    <!-- Submit button -->
+    <rect x="170" y="0" width="70" height="32" rx="6" fill="#292524"/>
+    <rect x="185" y="12" width="30" height="8" rx="1" fill="#ffffff"/>
+    <path d="M222 16 L228 16 M226 13 L229 16 L226 19" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Mail icon decoration -->
+  <g transform="translate(35, 85)" opacity="0.2">
+    <rect x="0" y="0" width="24" height="18" rx="2" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M0 3 L12 12 L24 3" stroke="#ffffff" stroke-width="2" fill="none"/>
+  </g>
+
+  <g transform="translate(341, 85)" opacity="0.2">
+    <rect x="0" y="0" width="24" height="18" rx="2" stroke="#ffffff" stroke-width="2" fill="none"/>
+    <path d="M0 3 L12 12 L24 3" stroke="#ffffff" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Label -->
+  <text x="200" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#78716c">Newsletter</text>
+</svg>
