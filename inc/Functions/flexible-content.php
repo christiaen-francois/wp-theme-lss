@@ -320,9 +320,9 @@ function lunivers_render_layout_separateur( $layout ) {
 	$image_url     = $image['url'] ?? '';
 	$image_alt     = $image['alt'] ?? '';
 	?>
-	<section class="layout-separateur relative <?php echo esc_attr( $spacing_class ); ?>">
-		<div class="absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $image_url ); ?>"></div>
-		<div class="absolute inset-0 bg-brown-950/40"></div>
+	<section class="layout-separateur relative overflow-hidden <?php echo esc_attr( $spacing_class ); ?>">
+		<div class="parallax-bg absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $image_url ); ?>"></div>
+		<div class="absolute inset-0 bg-brown-950/40 pointer-events-none"></div>
 		<div class="relative z-10 container mx-auto px-4 ">
 			<!-- Espace pour le séparateur -->
 		</div>
@@ -477,13 +477,11 @@ function lunivers_render_layout_hero( $layout ) {
 			$image_url = $image['url'] ?? '';
 			$image_alt = $image['alt'] ?? '';
 			?>
-			<div class="absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $image_url ); ?>">
-				<div class="absolute inset-0 bg-brown-950/<?php echo esc_attr( $overlay ); ?>"></div>
-			</div>
+			<div class="parallax-bg absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $image_url ); ?>"></div>
+			<div class="absolute inset-0 bg-brown-950/<?php echo esc_attr( $overlay ); ?> pointer-events-none"></div>
 		<?php else : ?>
-			<div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-primary-700">
-				<div class="absolute inset-0 bg-brown-950/<?php echo esc_attr( $overlay ); ?>"></div>
-			</div>
+			<div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-primary-700"></div>
+			<div class="absolute inset-0 bg-brown-950/<?php echo esc_attr( $overlay ); ?> pointer-events-none"></div>
 		<?php endif; ?>
 
 		<div class="relative z-10 container mx-auto px-4 text-center py-16 md:py-24 xl:py-32">

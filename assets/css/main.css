@@ -656,6 +656,17 @@
   will-change: transform, opacity;
 }
 
+/* Parallax background */
+.parallax-bg {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Agrandir pour couvrir le mouvement parallax (50px haut + 50px bas = 100px) */
+  top: -50px !important;
+  bottom: -50px !important;
+  height: calc(100% + 100px) !important;
+}
+
 /* Layout animations */
 .layout-hero,
 .layout-texte-image,

@@ -73,9 +73,8 @@ $contact_page_url = get_permalink( get_page_by_path( 'contact' ) ) ?: '#';
 		<!-- Hero Section -->
 		<section class="page-hero relative overflow-hidden <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : 'py-20 md:py-32'; ?>">
 			<?php if ( $hero_image ) : ?>
-				<div class="absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>">
-					<div class="absolute inset-0 bg-brown-950/40"></div>
-				</div>
+				<div class="parallax-bg absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>"></div>
+				<div class="absolute inset-0 bg-brown-950/40 pointer-events-none"></div>
 			<?php endif; ?>
 
 			<div class="relative z-10 container mx-auto px-4 flex items-center <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : ''; ?>">

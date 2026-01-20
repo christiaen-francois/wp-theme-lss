@@ -39,14 +39,14 @@ get_header();
 								$slide_url = $slide['url'] ?? '';
 								$slide_alt = $slide['alt'] ?? '';
 								?>
-								<div class="swiper-slide relative">
-									<img 
-										src="<?php echo esc_url( $slide_url ); ?>" 
+								<div class="swiper-slide relative overflow-hidden">
+									<img
+										src="<?php echo esc_url( $slide_url ); ?>"
 										alt="<?php echo esc_attr( $slide_alt ); ?>"
-										class="w-full h-full object-cover"
+										class="parallax-bg w-full h-full object-cover"
 										loading="lazy"
 									>
-									<div class="absolute inset-0 bg-brown-950/30"></div>
+									<div class="absolute inset-0 bg-brown-950/30 pointer-events-none"></div>
 									<div class="absolute inset-0 z-10 container mx-auto px-4 flex items-center">
 										<div class="max-w-6xl mx-auto text-center text-white">
 											<h1 class="text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight drop-shadow-lg">

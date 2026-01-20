@@ -29,9 +29,8 @@ get_header();
 		?>
 		<section class="page-hero relative overflow-hidden <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : 'py-20 md:py-32'; ?>">
 			<?php if ( $hero_image ) : ?>
-				<div class="absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>">
-					<div class="absolute inset-0 bg-brown-950/40"></div>
-				</div>
+				<div class="parallax-bg absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>"></div>
+				<div class="absolute inset-0 bg-brown-950/40 pointer-events-none"></div>
 			<?php endif; ?>
 
 			<div class="relative z-10 container mx-auto px-4 flex items-center <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : ''; ?>">
@@ -108,6 +107,7 @@ get_header();
 
 		<?php
 		// Edit link (only for logged-in users)
+		/*
 		if ( get_edit_post_link() ) {
 			?>
 			<section class="py-8 bg-cream-50 border-t border-neutral-200">
@@ -117,8 +117,7 @@ get_header();
 						edit_post_link(
 							sprintf(
 								wp_kses(
-									/* translators: %s: Name of current post. Only visible to screen readers */
-									__( 'Modifier <span class="screen-reader-text">%s</span>', 'lunivers-theme' ),
+										__( 'Modifier <span class="screen-reader-text">%s</span>', 'lunivers-theme' ),
 									[
 										'span' => [
 											'class' => [],
@@ -136,6 +135,7 @@ get_header();
 			</section>
 			<?php
 		}
+		*/
 
 		// If comments are open or we have at least one comment, load up the comment template.
 		if ( comments_open() || get_comments_number() ) {

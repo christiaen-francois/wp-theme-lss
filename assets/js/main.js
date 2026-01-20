@@ -14,6 +14,7 @@ import { initGuidePratique } from "./modules/guide-pratique";
 import { initContactForm } from "./modules/contact";
 import { initNewsletterForm } from "./modules/newsletter";
 import { initSmartHeader } from "./modules/smart-header";
+import { initParallax } from "./modules/parallax";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,6 +49,7 @@ function initApp() {
   window.addEventListener("preloaderComplete", () => {
     initLenis();
     initLazyLoad();
+    initParallax();
     initScrollAnimations();
     initNavigation();
     initSmartHeader();
@@ -68,6 +70,7 @@ function initApp() {
   if (!preloader) {
     initLenis();
     initLazyLoad();
+    initParallax();
     initScrollAnimations();
     initNavigation();
     initSmartHeader();

@@ -34,9 +34,8 @@ get_header();
 		<!-- Hero Section -->
 		<section class="page-hero relative overflow-hidden <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : 'py-20 md:py-32'; ?>">
 			<?php if ( $hero_image ) : ?>
-				<div class="absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>">
-					<div class="absolute inset-0 bg-brown-950/40"></div>
-				</div>
+				<div class="parallax-bg absolute inset-0 lazy bg-cover bg-center bg-no-repeat" data-bg="<?php echo esc_url( $hero_image ); ?>"></div>
+				<div class="absolute inset-0 bg-brown-950/40 pointer-events-none"></div>
 			<?php endif; ?>
 
 			<div class="relative z-10 container mx-auto px-4 flex items-center <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : ''; ?>">
@@ -232,7 +231,7 @@ get_header();
 			?>
 			<section class="contact-form py-16 md:py-24 bg-cream-50 border-t border-neutral-200">
 				<div class="container mx-auto px-4">
-					<div class="max-w-6xl mx-auto">
+					<div class="">
 						<!-- <h2 class="text-3xl md:text-4xl text-brown-950 mb-6 text-center">
 							<?php esc_html_e( 'Envoyez-nous un message', 'lunivers-theme' ); ?>
 						</h2>

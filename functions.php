@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'LUNIVERS_THEME_VERSION', '1.0.0' );
 define( 'LUNIVERS_THEME_PATH', get_template_directory() );
 define( 'LUNIVERS_THEME_URI', get_template_directory_uri() );
-define( 'LUNIVERS_THEME_ENV', "production" ); // 'local', 'development', 'production'...
-// define( 'LUNIVERS_THEME_ENV', wp_get_environment_type() ); // 'local', 'development', 'production'...
+// define( 'LUNIVERS_THEME_ENV', "production" ); // 'local', 'development', 'production'...
+define( 'LUNIVERS_THEME_ENV', wp_get_environment_type() ); // 'local', 'development', 'production'...
 
 
 // Composer autoload
@@ -25,6 +25,11 @@ require_once LUNIVERS_THEME_PATH . '/inc/Functions/wpml-helpers.php';
 require_once LUNIVERS_THEME_PATH . '/inc/Functions/flexible-content.php';
 require_once LUNIVERS_THEME_PATH . '/inc/Functions/image-helpers.php';
 require_once LUNIVERS_THEME_PATH . '/inc/Functions/contact-helpers.php';
+
+// Import script for itineraires (admin only)
+if ( is_admin() ) {
+    require_once LUNIVERS_THEME_PATH . '/import-itineraires.php';
+}
 
 // Include TGMPA
 require_once LUNIVERS_THEME_PATH . '/inc/helpers/tgm-plugin-activation/class-tgm-plugin-activation.php';
