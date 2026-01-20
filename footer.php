@@ -35,68 +35,12 @@ $footer_cta      = nl_get_footer_cta();
 
 					<!-- Logo et slogan -->
 					<div class="sm:col-span-2">
-						<?php
-				$logo_path = 'logo-inverse.svg';
-				if ( lunivers_image_exists( $logo_path ) ) {
-					$logo_file_path = lunivers_get_image_path( $logo_path );
-					$svg_content    = file_get_contents( $logo_file_path );
-					
-					if ( $svg_content ) {
-						// Nettoyer le SVG pour enlever les attributs width/height et garder seulement viewBox
-						$svg_content = preg_replace( '/<svg[^>]*>/', '<svg class="h-8 md:h-20 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548.37 105.56" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '">', $svg_content, 1 );
+
+						<img src="<?php echo LUNIVERS_THEME_URI; ?>/assets/images/logo-inverse.svg" class="w-[12rem] md:w-[20rem] h-auto mb-5" alt="">
 						
-						// Autoriser tous les éléments SVG nécessaires
-						$allowed_svg = [
-							'svg'  => [
-								'id'          => [],
-								'class'       => [],
-								'xmlns'       => [],
-								'viewbox'     => [],
-								'viewBox'     => [],
-								'width'       => [],
-								'height'      => [],
-								'version'     => [],
-								'aria-label'  => [],
-								'data-name'   => [],
-							],
-							'g'    => [
-								'id'        => [],
-								'data-name' => [],
-							],
-							'path' => [
-								'd'     => [],
-								'fill'  => [],
-								'class' => [],
-							],
-							'rect' => [
-								'x'      => [],
-								'y'      => [],
-								'width'  => [],
-								'height' => [],
-								'fill'   => [],
-								'class'  => [],
-							],
-						];
-						
-						?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-							<?php echo wp_kses( $svg_content, $allowed_svg ); ?>
-						</a>
-						<?php
-					}
-				} elseif ( has_custom_logo() ) {
-					the_custom_logo();
-				} else {
-					?>
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-xl font-bold text-cream-100 hover:text-primary-400 transition-colors" rel="home">
-						<?php bloginfo( 'name' ); ?>
-					</a>
-					<?php
-				}
-				?>
-				<p class="text-sm text-cream-200 mt-3">
-					<?php esc_html_e( 'Safaris d\'exception en Afrique', 'lunivers-theme' ); ?>
-				</p>
+						<p class="text-sm text-cream-200 mt-3">
+							<?php esc_html_e( 'Safaris d\'exception en Afrique', 'lunivers-theme' ); ?>
+						</p>
 					</div>
 
 					<!-- Contact -->
