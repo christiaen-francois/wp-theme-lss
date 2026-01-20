@@ -21,6 +21,27 @@
             "endpoint": 0
         },
         {
+            "key": "field_692755e935150",
+            "label": "Surtitre",
+            "name": "surtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Texte affiché au-dessus du titre principal",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_692755e935151",
             "label": "Titre",
             "name": "title",
@@ -42,11 +63,32 @@
             "append": ""
         },
         {
-            "key": "field_6927562535153",
-            "label": "Lien (optionnel)",
-            "name": "link",
+            "key": "field_692755e935154",
+            "label": "Description",
+            "name": "description",
             "aria-label": "",
-            "type": "link",
+            "type": "textarea",
+            "instructions": "Courte description affichée sous le titre",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_692755e935155",
+            "label": "Alignement du contenu",
+            "name": "content_alignment",
+            "aria-label": "",
+            "type": "button_group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -55,8 +97,81 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "allow_in_bindings": 0
+            "choices": {
+                "center": "Centré",
+                "left": "Aligné à gauche"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_6927562535153",
+            "label": "Liens (optionnel)",
+            "name": "links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Maximum 2 liens",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Ajouter un lien",
+            "rows_per_page": 2,
+            "sub_fields": [
+                {
+                    "key": "field_6927562535154",
+                    "label": "Lien",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6927562535153"
+                },
+                {
+                    "key": "field_6927562535155",
+                    "label": "Style",
+                    "name": "style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary": "Primaire (plein)",
+                        "secondary": "Secondaire (contour)"
+                    },
+                    "default_value": "primary",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6927562535153"
+                }
+            ]
         },
         {
             "key": "field_6927560335152",

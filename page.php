@@ -34,9 +34,9 @@ get_header();
 			<?php endif; ?>
 
 			<div class="relative z-10 container mx-auto px-4 flex items-center <?php echo $hero_image ? 'min-h-[50vh] md:min-h-[60vh]' : ''; ?>">
-				<div class="max-w-6xl mx-auto text-center <?php echo $hero_image ? 'text-white' : 'text-brown-950'; ?>">
+				<div class="max-w-6xl mx-auto text-center <?php echo $hero_image ? 'text-white' : 'text-brown-950'; ?> my-8">
 					<?php if ( $sur_titre ) : ?>
-						<p class="inline-block px-4 py-2 mb-2 text-sm tracking-wider text-primary-400 uppercase bg-brown-950/10 rounded-full border border-primary-500/20">
+						<p class="inline-block px-4 py-2 mb-4 text-sm tracking-wider text-white uppercase bg-white/15 backdrop-blur-sm rounded-full border border-white/30 drop-shadow-md">
 							<?php echo esc_html( $sur_titre ); ?>
 						</p>
 					<?php endif; ?>

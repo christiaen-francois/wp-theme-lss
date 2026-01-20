@@ -20,12 +20,19 @@ get_header();
 			the_post();
 			
 			// ACF Fields
-			$acf_title = function_exists( 'get_field' ) ? get_field( 'title' ) : '';
-			$acf_link  = function_exists( 'get_field' ) ? get_field( 'link' ) : '';
-			$acf_slider = function_exists( 'get_field' ) ? get_field( 'slider' ) : '';
-			
+			$acf_surtitle   = function_exists( 'get_field' ) ? get_field( 'surtitle' ) : '';
+			$acf_title      = function_exists( 'get_field' ) ? get_field( 'title' ) : '';
+			$acf_description = function_exists( 'get_field' ) ? get_field( 'description' ) : '';
+			$acf_alignment  = function_exists( 'get_field' ) ? get_field( 'content_alignment' ) : 'center';
+			$acf_links      = function_exists( 'get_field' ) ? get_field( 'links' ) : [];
+			$acf_slider     = function_exists( 'get_field' ) ? get_field( 'slider' ) : '';
+
 			// Use ACF title if available, otherwise use post title
 			$hero_title = $acf_title ? $acf_title : get_the_title();
+
+			// Alignment classes
+			$alignment_classes = $acf_alignment === 'left' ? 'text-left' : 'text-center';
+			$container_classes = $acf_alignment === 'left' ? '' : 'mx-auto';
 			?>
 			<section class="hero-section relative overflow-hidden">
 				<?php
@@ -47,34 +54,46 @@ get_header();
 										loading="lazy"
 									>
 									<div class="absolute inset-0 bg-brown-950/30 pointer-events-none"></div>
-									<div class="absolute inset-0 z-10 container mx-auto px-4 flex items-center">
-										<div class="max-w-6xl mx-auto text-center text-white">
+									<div class="absolute inset-0 z-10 container mx-auto px-4 flex items-center <?php echo $acf_alignment === 'left' ? 'justify-start' : 'justify-center'; ?>">
+										<div class="max-w-6xl <?php echo esc_attr( $alignment_classes ); ?> <?php echo esc_attr( $container_classes ); ?> text-white">
+											<?php if ( $acf_surtitle ) : ?>
+												<p class="inline-block px-4 py-2 mb-4 text-sm tracking-wider text-white uppercase bg-white/15 backdrop-blur-sm rounded-full border border-white/30 drop-shadow-md">
+													<?php echo esc_html( $acf_surtitle ); ?>
+												</p>
+											<?php endif; ?>
+
 											<h1 class="text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight drop-shadow-lg">
 												<?php echo esc_html( $hero_title ); ?>
 											</h1>
-											
-											<?php
-											if ( has_excerpt() ) {
-												?>
-												<div class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-													<?php the_excerpt(); ?>
-												</div>
-												<?php
-											}
-											?>
 
-											<?php if ( $acf_link && ! empty( $acf_link['url'] ) ) : ?>
-												<div class="mt-10">
-													<a
-														href="<?php echo esc_url( $acf_link['url'] ); ?>"
-														target="<?php echo esc_attr( $acf_link['target'] ?? '_self' ); ?>"
-														class="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 text-white font-heading font-semibold tracking-wide rounded-lg shadow-lg hover:bg-primary-600 transition-all duration-300 transform group"
-													>
-														<?php echo esc_html( $acf_link['title'] ?? 'En savoir plus' ); ?>
-														<svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-														</svg>
-													</a>
+											<?php if ( $acf_description ) : ?>
+												<div class="mb-8 max-w-3xl <?php echo $acf_alignment === 'center' ? 'mx-auto' : ''; ?> leading-relaxed drop-shadow-md">
+													<?php echo wp_kses_post( $acf_description ); ?>
+												</div>
+											<?php endif; ?>
+
+											<?php if ( $acf_links && is_array( $acf_links ) && ! empty( $acf_links ) ) : ?>
+												<div class="mt-10 flex flex-wrap gap-4 <?php echo $acf_alignment === 'center' ? 'justify-center' : ''; ?>">
+													<?php foreach ( $acf_links as $link_item ) :
+														$link = $link_item['link'] ?? [];
+														$style = $link_item['style'] ?? 'primary';
+														if ( empty( $link['url'] ) ) continue;
+
+														$btn_classes = $style === 'primary'
+															? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg'
+															: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-brown-950';
+													?>
+														<a
+															href="<?php echo esc_url( $link['url'] ); ?>"
+															target="<?php echo esc_attr( $link['target'] ?? '_self' ); ?>"
+															class="inline-flex items-center gap-2 px-8 py-4 font-heading font-semibold tracking-wide rounded-lg transition-all duration-300 transform group <?php echo esc_attr( $btn_classes ); ?>"
+														>
+															<?php echo esc_html( $link['title'] ?? 'En savoir plus' ); ?>
+															<svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+															</svg>
+														</a>
+													<?php endforeach; ?>
 												</div>
 											<?php endif; ?>
 										</div>
@@ -91,43 +110,55 @@ get_header();
 					// Hero without slider
 					?>
 					<div class="container mx-auto px-4 py-24 md:py-32">
-						<div class="max-w-4xl mx-auto text-center">
+						<div class="max-w-4xl <?php echo esc_attr( $alignment_classes ); ?> <?php echo esc_attr( $container_classes ); ?>">
 							<?php
 							if ( has_post_thumbnail() ) {
 								?>
-								<div class="mb-12">
-									<?php the_post_thumbnail( 'large', [ 'class' => 'mx-auto rounded-lg shadow-2xl max-w-2xl' ] ); ?>
-								</div>
-								<?php
-							}
-							?>
-							
-							<h1 class="text-5xl md:text-6xl lg:text-7xl text-brown-950 mb-6 leading-tight">
-								<?php echo esc_html( $hero_title ); ?>
-							</h1>
-							
-							<?php
-							if ( has_excerpt() ) {
-								?>
-								<div class="text-xl md:text-2xl text-brown-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-									<?php the_excerpt(); ?>
+								<div class="mb-12 <?php echo $acf_alignment === 'center' ? '' : ''; ?>">
+									<?php the_post_thumbnail( 'large', [ 'class' => ( $acf_alignment === 'center' ? 'mx-auto ' : '' ) . 'rounded-lg shadow-2xl max-w-2xl' ] ); ?>
 								</div>
 								<?php
 							}
 							?>
 
-							<?php if ( $acf_link && ! empty( $acf_link['url'] ) ) : ?>
-								<div class="mt-10">
-									<a
-										href="<?php echo esc_url( $acf_link['url'] ); ?>"
-										target="<?php echo esc_attr( $acf_link['target'] ?? '_self' ); ?>"
-										class="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 text-white font-heading font-semibold tracking-wide rounded-lg shadow-lg hover:bg-primary-600 transition-all duration-300 transform group"
-									>
-										<?php echo esc_html( $acf_link['title'] ?? 'En savoir plus' ); ?>
-										<svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-										</svg>
-									</a>
+							<?php if ( $acf_surtitle ) : ?>
+								<p class="text-lg md:text-xl font-medium uppercase tracking-widest text-primary-500 mb-4">
+									<?php echo esc_html( $acf_surtitle ); ?>
+								</p>
+							<?php endif; ?>
+
+							<h1 class="text-5xl md:text-6xl lg:text-7xl text-brown-950 mb-6 leading-tight">
+								<?php echo esc_html( $hero_title ); ?>
+							</h1>
+
+							<?php if ( $acf_description ) : ?>
+								<div class="text-xl md:text-2xl text-brown-700 mb-8 max-w-3xl <?php echo $acf_alignment === 'center' ? 'mx-auto' : ''; ?> leading-relaxed">
+									<?php echo wp_kses_post( $acf_description ); ?>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( $acf_links && is_array( $acf_links ) && ! empty( $acf_links ) ) : ?>
+								<div class="mt-10 flex flex-wrap gap-4 <?php echo $acf_alignment === 'center' ? 'justify-center' : ''; ?>">
+									<?php foreach ( $acf_links as $link_item ) :
+										$link = $link_item['link'] ?? [];
+										$style = $link_item['style'] ?? 'primary';
+										if ( empty( $link['url'] ) ) continue;
+
+										$btn_classes = $style === 'primary'
+											? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg'
+											: 'bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white';
+									?>
+										<a
+											href="<?php echo esc_url( $link['url'] ); ?>"
+											target="<?php echo esc_attr( $link['target'] ?? '_self' ); ?>"
+											class="inline-flex items-center gap-2 px-8 py-4 font-heading font-semibold tracking-wide rounded-lg transition-all duration-300 transform group <?php echo esc_attr( $btn_classes ); ?>"
+										>
+											<?php echo esc_html( $link['title'] ?? 'En savoir plus' ); ?>
+											<svg class="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+											</svg>
+										</a>
+									<?php endforeach; ?>
 								</div>
 							<?php endif; ?>
 						</div>
