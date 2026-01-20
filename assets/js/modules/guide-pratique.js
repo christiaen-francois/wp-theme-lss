@@ -5,16 +5,18 @@
 
 export function initGuidePratique() {
   const guideContainer = document.querySelector('[data-guide-pratique]');
-  
+
   if (!guideContainer) {
     return;
   }
 
   const tocNav = guideContainer.querySelector('[data-toc-nav]');
+  const tocMobile = document.querySelector('[data-toc-mobile]');
   const tocLinks = guideContainer.querySelectorAll('[data-toc-link]');
   const sections = guideContainer.querySelectorAll('[data-section]');
 
-  if (!tocNav || tocLinks.length === 0 || sections.length === 0) {
+  // Au moins une navigation et des sections doivent exister
+  if ((!tocNav && !tocMobile) || tocLinks.length === 0 || sections.length === 0) {
     return;
   }
 
@@ -50,7 +52,7 @@ export function initGuidePratique() {
   // Fonction pour mettre à jour l'état actif des liens
   const updateActiveLink = () => {
     const activeSection = getActiveSection();
-    
+
     if (!activeSection) {
       return;
     }
@@ -59,21 +61,51 @@ export function initGuidePratique() {
 
     tocLinks.forEach((link) => {
       const linkSectionId = getSectionIdFromLink(link);
-      
+      const isMobileLink = link.classList.contains('toc-mobile-link');
+
       if (linkSectionId === activeSectionId) {
-        link.classList.add('text-primary-500', 'font-semibold');
-        // Retirer toutes les classes de couleur possibles
-        link.classList.remove('text-neutral-600', 'text-brown-700', 'text-cream-200');
+        if (isMobileLink) {
+          // Style actif pour les liens mobiles (pills)
+          link.classList.add('bg-primary-500', 'text-white', 'shadow-md');
+          link.classList.remove('bg-brown-100', 'text-brown-700', 'hover:bg-brown-200');
+        } else {
+          // Style actif pour les liens desktop (sidebar)
+          link.classList.add('text-primary-500', 'font-semibold');
+          link.classList.remove('text-neutral-600', 'text-brown-700', 'text-cream-200');
+        }
       } else {
-        link.classList.remove('text-primary-500', 'font-semibold');
-        // Ajouter une classe de couleur par défaut si aucune n'est présente
-        if (!link.classList.contains('text-neutral-600') && 
-            !link.classList.contains('text-brown-700') && 
-            !link.classList.contains('text-cream-200')) {
-          link.classList.add('text-neutral-600');
+        if (isMobileLink) {
+          // Style inactif pour les liens mobiles
+          link.classList.remove('bg-primary-500', 'text-white', 'shadow-md');
+          link.classList.add('bg-brown-100', 'text-brown-700', 'hover:bg-brown-200');
+        } else {
+          // Style inactif pour les liens desktop
+          link.classList.remove('text-primary-500', 'font-semibold');
+          if (
+            !link.classList.contains('text-neutral-600') &&
+            !link.classList.contains('text-brown-700') &&
+            !link.classList.contains('text-cream-200')
+          ) {
+            link.classList.add('text-neutral-600');
+          }
         }
       }
     });
+
+    // Scroll automatique pour centrer le lien actif dans la nav mobile
+    if (tocMobile) {
+      const activeLink = tocMobile.querySelector(`[data-target="${activeSectionId}"]`);
+      if (activeLink) {
+        const container = tocMobile.querySelector('.overflow-x-auto');
+        if (container) {
+          const linkRect = activeLink.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+          const scrollLeft =
+            activeLink.offsetLeft - container.offsetWidth / 2 + linkRect.width / 2;
+          container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+      }
+    }
   };
 
   // Gérer le clic sur les liens de la table des matières
@@ -119,24 +151,49 @@ export function initGuidePratique() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const sectionId = entry.target.getAttribute('id');
-        
+
         tocLinks.forEach((link) => {
           const linkSectionId = getSectionIdFromLink(link);
-          
+          const isMobileLink = link.classList.contains('toc-mobile-link');
+
           if (linkSectionId === sectionId) {
-            link.classList.add('text-primary-500', 'font-semibold');
-            // Retirer toutes les classes de couleur possibles
-            link.classList.remove('text-neutral-600', 'text-brown-700', 'text-cream-200');
+            if (isMobileLink) {
+              link.classList.add('bg-primary-500', 'text-white', 'shadow-md');
+              link.classList.remove('bg-brown-100', 'text-brown-700', 'hover:bg-brown-200');
+            } else {
+              link.classList.add('text-primary-500', 'font-semibold');
+              link.classList.remove('text-neutral-600', 'text-brown-700', 'text-cream-200');
+            }
           } else {
-            link.classList.remove('text-primary-500', 'font-semibold');
-            // Ajouter une classe de couleur par défaut si aucune n'est présente
-            if (!link.classList.contains('text-neutral-600') && 
-                !link.classList.contains('text-brown-700') && 
-                !link.classList.contains('text-cream-200')) {
-              link.classList.add('text-neutral-600');
+            if (isMobileLink) {
+              link.classList.remove('bg-primary-500', 'text-white', 'shadow-md');
+              link.classList.add('bg-brown-100', 'text-brown-700', 'hover:bg-brown-200');
+            } else {
+              link.classList.remove('text-primary-500', 'font-semibold');
+              if (
+                !link.classList.contains('text-neutral-600') &&
+                !link.classList.contains('text-brown-700') &&
+                !link.classList.contains('text-cream-200')
+              ) {
+                link.classList.add('text-neutral-600');
+              }
             }
           }
         });
+
+        // Scroll automatique pour centrer le lien actif dans la nav mobile
+        if (tocMobile) {
+          const activeLink = tocMobile.querySelector(`[data-target="${sectionId}"]`);
+          if (activeLink) {
+            const container = tocMobile.querySelector('.overflow-x-auto');
+            if (container) {
+              const linkRect = activeLink.getBoundingClientRect();
+              const scrollLeft =
+                activeLink.offsetLeft - container.offsetWidth / 2 + linkRect.width / 2;
+              container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            }
+          }
+        }
       }
     });
   }, observerOptions);
@@ -146,12 +203,28 @@ export function initGuidePratique() {
     sectionObserver.observe(section);
   });
 
-  // Mettre à jour l'état actif au scroll (fallback)
+  // Mettre à jour l'état actif au scroll (fallback) et gérer la visibilité de la nav mobile
   let ticking = false;
   const handleScroll = () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         updateActiveLink();
+
+        // Cacher la nav mobile quand on approche du footer
+        if (tocMobile) {
+          const footer = document.querySelector('footer');
+          if (footer) {
+            const footerRect = footer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            // Cacher quand le footer entre dans le viewport
+            if (footerRect.top < windowHeight) {
+              tocMobile.classList.add('translate-y-full');
+            } else {
+              tocMobile.classList.remove('translate-y-full');
+            }
+          }
+        }
+
         ticking = false;
       });
       ticking = true;

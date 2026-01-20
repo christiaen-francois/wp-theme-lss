@@ -1407,6 +1407,42 @@ function lunivers_render_layout_guide_pratique( $layout ) {
 				</div>
 			</div>
 		</div>
+
+		<?php if ( $show_toc && count( $sections_with_ids ) > 1 ) : ?>
+			<!-- Navigation sticky bottom mobile -->
+			<nav
+				class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-brown-200 shadow-lg lg:hidden transform translate-y-0 transition-transform duration-300"
+				aria-label="<?php esc_attr_e( 'Navigation mobile du sommaire', 'lunivers-theme' ); ?>"
+				data-toc-mobile
+			>
+				<div class="container mx-auto px-4">
+					<div class="flex overflow-x-auto py-3 gap-2 scrollbar-hide -mx-4 px-4">
+						<?php foreach ( $sections_with_ids as $index => $section ) : ?>
+							<?php
+							$titre_section = $section['titre'] ?? '';
+							$section_id    = $section['id'] ?? '';
+							?>
+							<?php if ( $titre_section && $section_id ) : ?>
+								<a
+									href="#<?php echo esc_attr( $section_id ); ?>"
+									class="toc-mobile-link flex-shrink-0 inline-flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-full transition-all duration-200 whitespace-nowrap
+										<?php echo 0 === $index ? 'bg-primary-500 text-white shadow-md' : 'bg-brown-100 text-brown-700 hover:bg-brown-200'; ?>"
+									data-toc-link
+									data-target="<?php echo esc_attr( $section_id ); ?>"
+								>
+									<span class="w-5 h-5 flex items-center justify-center rounded-full bg-white/20 text-[10px] font-bold">
+										<?php echo esc_html( $index + 1 ); ?>
+									</span>
+									<span><?php echo esc_html( $titre_section ); ?></span>
+								</a>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</nav>
+			<!-- Spacer pour éviter que le contenu soit caché par la nav mobile -->
+			<div class="h-16 lg:hidden" aria-hidden="true"></div>
+		<?php endif; ?>
 	</section>
 	<?php
 }
