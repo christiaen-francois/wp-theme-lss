@@ -408,7 +408,7 @@ get_header();
 
 							<!-- Informations de contact (1 colonne sur 3) -->
 							<div class="lg:col-span-1">
-								<div class="bg-white rounded-lg shadow-md border border-neutral-200p-6 md:p-8 sticky top-8">
+								<div class="bg-white rounded-lg shadow-md border border-neutral-200 p-6 md:p-8 sticky top-8">
 									<h3 class="text-xl md:text-2xl text-brown-950 mb-6">
 										<?php esc_html_e( 'Nos coordonnées', 'lunivers-theme' ); ?>
 									</h3>

@@ -23,6 +23,7 @@ get_header();
 		$hero_image = get_field("background_image") ? get_field("background_image")["sizes"]["large"] : '';
 		$has_flexible = function_exists( 'get_field' ) && get_field( 'flexible_content' );
 		$sur_titre = get_field( 'sur_titre' ) ?? '';
+		$titre = get_field( 'title' ) ?? get_the_title();
 		$extrait = get_field( 'extrait' ) ?? '';
 		// Utiliser l'extrait ACF si disponible, sinon l'extrait WordPress
 		$extrait_display = ! empty( $extrait ) ? $extrait : ( has_excerpt() ? get_the_excerpt() : '' );
@@ -42,7 +43,7 @@ get_header();
 					<?php endif; ?>
 
 					<h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 leading-tight <?php echo $hero_image ? 'drop-shadow-lg' : ''; ?>">
-						<?php the_title(); ?>
+						<?php echo $titre; ?>
 					</h1>
 
 					<?php if ( $extrait_display ) : ?>

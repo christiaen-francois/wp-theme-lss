@@ -97,9 +97,112 @@ $menus_class = Menus::get_instance();
 
 	<header id="masthead" class="site-header fixed top-0 left-0 right-0 z-40 bg-brown-950 text-cream-100 transition-transform duration-300 ease-out" role="banner" data-smart-header>
 		<div class="container mx-auto px-4">
-			<nav class="flex items-center justify-between py-6" aria-label="<?php esc_attr_e( 'Navigation principale', 'lunivers-theme' ); ?>">
+			<nav class="flex items-center justify-between py-4 md:py-6 " aria-label="<?php esc_attr_e( 'Navigation principale', 'lunivers-theme' ); ?>">
 				<div class="site-branding">
 					<?php
+					$logo_path = 'logo-h.svg';
+					if ( lunivers_image_exists( $logo_path ) ) {
+						$logo_file_path = lunivers_get_image_path( $logo_path );
+						$svg_content    = file_get_contents( $logo_file_path );
+						
+						if ( $svg_content ) {
+							// Nettoyer le SVG pour enlever les attributs width/height et garder seulement viewBox
+							$svg_content = preg_replace( '/<svg[^>]*>/', '<svg class="h-8 md:h-10 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548.37 105.56" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '">', $svg_content, 1 );
+							
+							// Autoriser tous les éléments SVG nécessaires
+							$allowed_svg = [
+								'svg'  => [
+									'id'          => [],
+									'class'       => [],
+									'xmlns'       => [],
+									'viewbox'     => [],
+									'viewBox'     => [],
+									'width'       => [],
+									'height'      => [],
+									'version'     => [],
+									'aria-label'  => [],
+									'data-name'   => [],
+								],
+								'g'    => [
+									'id'        => [],
+									'data-name' => [],
+								],
+								'path' => [
+									'd'     => [],
+									'fill'  => [],
+									'class' => [],
+								],
+								'rect' => [
+									'x'      => [],
+									'y'      => [],
+									'width'  => [],
+									'height' => [],
+									'fill'   => [],
+									'class'  => [],
+								],
+							];
+							
+							?>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="block" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+								<?php echo wp_kses( $svg_content, $allowed_svg ); ?>
+							</a>
+							<?php
+						}
+					} elseif ( has_custom_logo() ) {
+						the_custom_logo();
+					} else {
+						?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-xl font-bold text-cream-100 hover:text-primary-400 transition-colors" rel="home">
+							<?php bloginfo( 'name' ); ?>
+						</a>
+						<?php
+					}
+					?>
+				</div>
+
+				<?php
+				$menu_id = $menus_class->get_menu_id( 'primary' );
+				
+				if ( $menu_id ) {
+					wp_nav_menu( [
+						'theme_location' => 'primary',
+						'menu_id'        => 'primary-menu',
+						'container'      => false,
+						'menu_class'      => 'hidden lg:flex items-center gap-6',
+						'walker'          => new Nav_Walker(),
+						'fallback_cb'     => false,
+					] );
+				}
+				?>
+
+				<button
+					data-menu-toggle
+					class="lg:hidden p-2 text-cream-100 hover:text-primary-400 transition-colors"
+					aria-expanded="false"
+					aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'lunivers-theme' ); ?>"
+					aria-controls="primary-menu"
+				>
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</nav>
+
+			</div>
+	</header>
+
+	<?php
+	// Menu mobile (en dehors du header pour couvrir toute la hauteur)
+	if ( $menu_id ) {
+		?>
+		<nav
+			data-menu
+			class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-brown-950 text-cream-100 shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+			role="navigation"
+			aria-label="<?php esc_attr_e( 'Menu mobile', 'lunivers-theme' ); ?>"
+		>
+			<div class="flex items-center justify-between p-4 md:p-6 border-b border-brown-800">
+				<?php
 					$logo_path = 'logo-h.svg';
 					if ( lunivers_image_exists( $logo_path ) ) {
 						$logo_file_path = lunivers_get_image_path( $logo_path );
@@ -158,51 +261,6 @@ $menus_class = Menus::get_instance();
 						<?php
 					}
 					?>
-				</div>
-
-				<?php
-				$menu_id = $menus_class->get_menu_id( 'primary' );
-				
-				if ( $menu_id ) {
-					wp_nav_menu( [
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'container'      => false,
-						'menu_class'      => 'hidden lg:flex items-center gap-6',
-						'walker'          => new Nav_Walker(),
-						'fallback_cb'     => false,
-					] );
-				}
-				?>
-
-				<button
-					data-menu-toggle
-					class="lg:hidden p-2 text-cream-100 hover:text-primary-400 transition-colors"
-					aria-expanded="false"
-					aria-label="<?php esc_attr_e( 'Ouvrir le menu', 'lunivers-theme' ); ?>"
-					aria-controls="primary-menu"
-				>
-					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-					</svg>
-				</button>
-			</nav>
-
-			</div>
-	</header>
-
-	<?php
-	// Menu mobile (en dehors du header pour couvrir toute la hauteur)
-	if ( $menu_id ) {
-		?>
-		<nav
-			data-menu
-			class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-brown-950 text-cream-100 shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
-			role="navigation"
-			aria-label="<?php esc_attr_e( 'Menu mobile', 'lunivers-theme' ); ?>"
-		>
-			<div class="flex items-center justify-between p-6 border-b border-brown-800">
-				<span class="text-lg font-semibold text-cream-100"><?php esc_html_e( 'Menu', 'lunivers-theme' ); ?></span>
 				<button
 					data-menu-close
 					class="p-2 text-cream-100 hover:text-primary-400 transition-colors"

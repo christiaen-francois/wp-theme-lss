@@ -22,76 +22,81 @@ $footer_cta      = nl_get_footer_cta();
 	<footer id="colophon" class="site-footer mt-auto bg-brown-950 text-cream-100" role="contentinfo">
 		<div class="container mx-auto px-4 py-12 md:py-16 lg:py-20">
 
+
+			<div class="mb-8 text-center">
+				
+			</div>
+
 			<!-- Structure principale en 2 colonnes -->
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
 				<!-- COLONNE 1 : Infos de contact en grille 2x2 -->
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+				<div class="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
 
 					<!-- Logo et slogan -->
 					<div class="sm:col-span-2">
 						<?php
-						$logo_path = 'logo-h.svg';
-						if ( lunivers_image_exists( $logo_path ) ) {
-							$logo_file_path = lunivers_get_image_path( $logo_path );
-							$svg_content    = file_get_contents( $logo_file_path );
-							
-							if ( $svg_content ) {
-								// Nettoyer le SVG pour enlever les attributs width/height et garder seulement viewBox
-								$svg_content = preg_replace( '/<svg[^>]*>/', '<svg class="h-8 md:h-10 lg:h-[4.5rem] w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548.37 105.56" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '">', $svg_content, 1 );
-								
-								// Autoriser tous les éléments SVG nécessaires
-								$allowed_svg = [
-									'svg'  => [
-										'id'          => [],
-										'class'       => [],
-										'xmlns'       => [],
-										'viewbox'     => [],
-										'viewBox'     => [],
-										'width'       => [],
-										'height'      => [],
-										'version'     => [],
-										'aria-label'  => [],
-										'data-name'   => [],
-									],
-									'g'    => [
-										'id'        => [],
-										'data-name' => [],
-									],
-									'path' => [
-										'd'     => [],
-										'fill'  => [],
-										'class' => [],
-									],
-									'rect' => [
-										'x'      => [],
-										'y'      => [],
-										'width'  => [],
-										'height' => [],
-										'fill'   => [],
-										'class'  => [],
-									],
-								];
-								
-								?>
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-									<?php echo wp_kses( $svg_content, $allowed_svg ); ?>
-								</a>
-								<?php
-							}
-						} elseif ( has_custom_logo() ) {
-							the_custom_logo();
-						} else {
-							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-xl font-bold text-cream-100 hover:text-primary-400 transition-colors" rel="home">
-								<?php bloginfo( 'name' ); ?>
-							</a>
-							<?php
-						}
+				$logo_path = 'logo-inverse.svg';
+				if ( lunivers_image_exists( $logo_path ) ) {
+					$logo_file_path = lunivers_get_image_path( $logo_path );
+					$svg_content    = file_get_contents( $logo_file_path );
+					
+					if ( $svg_content ) {
+						// Nettoyer le SVG pour enlever les attributs width/height et garder seulement viewBox
+						$svg_content = preg_replace( '/<svg[^>]*>/', '<svg class="h-8 md:h-20 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548.37 105.56" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '">', $svg_content, 1 );
+						
+						// Autoriser tous les éléments SVG nécessaires
+						$allowed_svg = [
+							'svg'  => [
+								'id'          => [],
+								'class'       => [],
+								'xmlns'       => [],
+								'viewbox'     => [],
+								'viewBox'     => [],
+								'width'       => [],
+								'height'      => [],
+								'version'     => [],
+								'aria-label'  => [],
+								'data-name'   => [],
+							],
+							'g'    => [
+								'id'        => [],
+								'data-name' => [],
+							],
+							'path' => [
+								'd'     => [],
+								'fill'  => [],
+								'class' => [],
+							],
+							'rect' => [
+								'x'      => [],
+								'y'      => [],
+								'width'  => [],
+								'height' => [],
+								'fill'   => [],
+								'class'  => [],
+							],
+						];
+						
 						?>
-						<p class="text-sm text-cream-200 mt-3">
-							<?php esc_html_e( 'Safaris d\'exception en Afrique', 'lunivers-theme' ); ?>
-						</p>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="inline-block" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+							<?php echo wp_kses( $svg_content, $allowed_svg ); ?>
+						</a>
+						<?php
+					}
+				} elseif ( has_custom_logo() ) {
+					the_custom_logo();
+				} else {
+					?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-xl font-bold text-cream-100 hover:text-primary-400 transition-colors" rel="home">
+						<?php bloginfo( 'name' ); ?>
+					</a>
+					<?php
+				}
+				?>
+				<p class="text-sm text-cream-200 mt-3">
+					<?php esc_html_e( 'Safaris d\'exception en Afrique', 'lunivers-theme' ); ?>
+				</p>
 					</div>
 
 					<!-- Contact -->
@@ -230,7 +235,7 @@ $footer_cta      = nl_get_footer_cta();
 				</div>
 
 				<!-- COLONNE 2 : CTA -->
-				<div>
+				<div class="order-1 lg:order-2">
 					
 					<div class="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-500 bg-white/5 border border-white/10">
 						<?php if ( ! empty( $footer_cta['image'] ) ) : ?>

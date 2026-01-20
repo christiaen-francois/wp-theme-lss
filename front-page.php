@@ -55,25 +55,25 @@ get_header();
 									>
 									<div class="absolute inset-0 bg-brown-950/30 pointer-events-none"></div>
 									<div class="absolute inset-0 z-10 container mx-auto px-4 flex items-center <?php echo $acf_alignment === 'left' ? 'justify-start' : 'justify-center'; ?>">
-										<div class="max-w-6xl <?php echo esc_attr( $alignment_classes ); ?> <?php echo esc_attr( $container_classes ); ?> text-white">
+										<div class="max-w-6xl <?php echo esc_attr( $alignment_classes ); ?> <?php echo esc_attr( $container_classes ); ?> text-white py-14">
 											<?php if ( $acf_surtitle ) : ?>
 												<p class="inline-block px-4 py-2 mb-4 text-xs tracking-wider text-white uppercase bg-white/15 backdrop-blur-sm rounded-full border border-white/30 drop-shadow-md">
 													<?php echo esc_html( $acf_surtitle ); ?>
 												</p>
 											<?php endif; ?>
 
-											<h1 class="text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight drop-shadow-lg">
+											<h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-3 md:mb-6 leading-tight drop-shadow-lg">
 												<?php echo esc_html( $hero_title ); ?>
 											</h1>
 
 											<?php if ( $acf_description ) : ?>
-												<div class="mb-8 max-w-3xl <?php echo $acf_alignment === 'center' ? 'mx-auto' : ''; ?> leading-relaxed drop-shadow-md">
+												<div class="mb-5 max-w-3xl <?php echo $acf_alignment === 'center' ? 'mx-auto' : ''; ?> leading-relaxed drop-shadow-md">
 													<?php echo wp_kses_post( $acf_description ); ?>
 												</div>
 											<?php endif; ?>
 
 											<?php if ( $acf_links && is_array( $acf_links ) && ! empty( $acf_links ) ) : ?>
-												<div class="mt-10 flex flex-wrap gap-4 <?php echo $acf_alignment === 'center' ? 'justify-center' : ''; ?>">
+												<div class="mt-8 flex flex-wrap gap-4 <?php echo $acf_alignment === 'center' ? 'justify-center' : ''; ?>">
 													<?php foreach ( $acf_links as $link_item ) :
 														$link = $link_item['link'] ?? [];
 														$style = $link_item['style'] ?? 'primary';
