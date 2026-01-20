@@ -81,7 +81,7 @@ get_header();
 
 														$btn_classes = $style === 'primary'
 															? 'bg-primary-500 text-white hover:bg-primary-600 shadow-lg'
-															: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-brown-950';
+															: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-brown-950 bg-white/15 backdrop-blur-sm';
 													?>
 														<a
 															href="<?php echo esc_url( $link['url'] ); ?>"

@@ -229,7 +229,7 @@ get_header();
 			$contact_people = nl_get_contact_people();
 			$social_networks = nl_get_social_networks();
 			?>
-			<section class="contact-form py-16 md:py-24 bg-cream-50 border-t border-neutral-200">
+			<section class="contact-form py-16 md:py-24 bg-white">
 				<div class="container mx-auto px-4">
 					<div class="">
 						<!-- <h2 class="text-3xl md:text-4xl text-brown-950 mb-6 text-center">
@@ -408,7 +408,7 @@ get_header();
 
 							<!-- Informations de contact (1 colonne sur 3) -->
 							<div class="lg:col-span-1">
-								<div class="bg-white rounded-lg p-6 md:p-8 shadow-lg sticky top-8">
+								<div class="bg-white rounded-lg shadow-md border border-neutral-200p-6 md:p-8 sticky top-8">
 									<h3 class="text-xl md:text-2xl text-brown-950 mb-6">
 										<?php esc_html_e( 'Nos coordonnées', 'lunivers-theme' ); ?>
 									</h3>
