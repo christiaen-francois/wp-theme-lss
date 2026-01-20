@@ -346,8 +346,11 @@ function lunivers_get_itineraires_data(): array
 
 /**
  * Importer un itinéraire
+ *
+ * @param array $data Données de l'itinéraire
+ * @return int|WP_Error Post ID ou erreur
  */
-function lunivers_import_single_itineraire(array $data): int|WP_Error
+function lunivers_import_single_itineraire( array $data )
 {
     // Vérifier si l'itinéraire existe déjà
     $existing = get_posts([
