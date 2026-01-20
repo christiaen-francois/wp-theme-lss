@@ -9,6 +9,7 @@ class Assets {
     protected function __construct() {
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_front' ] );
         add_action( 'wp_head', [ $this, 'preload_fonts' ], 1 );
+        add_action( 'wp_head', [ $this, 'preload_lcp_image' ], 2 );
 
         add_filter( 'script_loader_tag', [ $this, 'add_module_attribute' ], 10, 3 );
     }
@@ -42,6 +43,30 @@ class Assets {
             >
         </noscript>
         <?php
+    }
+
+    /**
+     * Preload de l'image LCP (hero) pour améliorer le Largest Contentful Paint
+     */
+    public function preload_lcp_image() {
+        // Seulement sur la page d'accueil
+        if ( ! is_front_page() || ! function_exists( 'get_field' ) ) {
+            return;
+        }
+
+        $slider = get_field( 'slider' );
+
+        // Si on a un slider, précharger la première image
+        if ( $slider && is_array( $slider ) && ! empty( $slider ) ) {
+            $first_slide = $slider[0];
+            $image_url   = $first_slide['url'] ?? '';
+
+            if ( $image_url ) {
+                ?>
+                <link rel="preload" as="image" href="<?php echo esc_url( $image_url ); ?>" fetchpriority="high">
+                <?php
+            }
+        }
     }
 
     public function enqueue_front() {

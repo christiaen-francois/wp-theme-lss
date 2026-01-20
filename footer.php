@@ -36,7 +36,7 @@ $footer_cta      = nl_get_footer_cta();
 					<!-- Logo et slogan -->
 					<div class="sm:col-span-2">
 
-						<img src="<?php echo LUNIVERS_THEME_URI; ?>/assets/images/logo-inverse.svg" class="w-[12rem] md:w-[20rem] h-auto mb-5" alt="">
+						<img src="<?php echo LUNIVERS_THEME_URI; ?>/assets/images/logo-inverse.svg" class="w-[12rem] md:w-[20rem] h-auto mb-5" width="320" height="80" alt="<?php bloginfo( 'name' ); ?>">
 						
 						<p class="text-sm text-cream-200 mt-3">
 							<?php esc_html_e( 'Safaris d\'exception en Afrique', 'lunivers-theme' ); ?>
@@ -261,7 +261,7 @@ $footer_cta      = nl_get_footer_cta();
 			<div class="border-t border-brown-800 mt-12 pt-6 md:pt-8">
 				<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 					<!-- Copyright -->
-					<p class="text-xs text-cream-300">
+					<p class="text-xs text-cream-100/70">
 						&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="hover:text-primary-400 transition-colors">
 							<?php bloginfo( 'name' ); ?>
@@ -277,7 +277,7 @@ $footer_cta      = nl_get_footer_cta();
 								[
 									'theme_location' => 'footer',
 									'container'      => false,
-									'menu_class'     => 'flex flex-wrap gap-x-6 gap-y-2 text-xs text-cream-300',
+									'menu_class'     => 'flex flex-wrap gap-x-6 gap-y-2 text-xs text-cream-100/70',
 									'depth'          => 1,
 									'fallback_cb'    => false,
 									'link_before'    => '',
