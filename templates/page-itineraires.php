@@ -147,7 +147,7 @@ $contact_page_url = get_permalink( get_page_by_path( 'contact' ) ) ?: '#';
 			</nav>
 
 			<!-- Itinéraires -->
-			<section class="py-12 md:py-20 lg:py-24">
+			<section class="py-16 md:py-24 xl:py-32">
 				<div class="container mx-auto px-4">
 					<div class="space-y-20 md:space-y-32">
 						<?php foreach ( $itineraires as $index => $itineraire ) :

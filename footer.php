@@ -246,7 +246,7 @@ $footer_cta      = nl_get_footer_cta();
 	
 						<div class="relative p-8 md:p-10 lg:p-12">
 							<?php if ( ! empty( $footer_cta['sur_titre'] ) ) : ?>
-								<span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider uppercase bg-primary-500/20 text-primary-400 rounded-full mb-4">
+								<span class="inline-block px-4 py-2 mb-2 text-xs tracking-wider text-primary-400 uppercase bg-primary-500/10 rounded-full border border-primary-500/20 mb-4">
 									<?php echo esc_html( $footer_cta['sur_titre'] ); ?>
 								</span>
 							<?php endif; ?>

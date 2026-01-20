@@ -68,7 +68,7 @@ get_header();
 				
 				if ( $contact_site_1 || $contact_site_2 ) {
 					?>
-					<section class="contact-info py-16 md:py-24 bg-white">
+					<section class="contact-info py-16 md:py-24 xl:py-32 bg-white">
 						<div class="container mx-auto px-4">
 							<div class="max-w-6xl mx-auto">
 								<h2 class="text-3xl md:text-4xl text-brown-950 mb-8 md:mb-12 text-center">
