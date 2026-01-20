@@ -57,7 +57,7 @@ get_header();
 									<div class="absolute inset-0 z-10 container mx-auto px-4 flex items-center <?php echo $acf_alignment === 'left' ? 'justify-start' : 'justify-center'; ?>">
 										<div class="max-w-6xl <?php echo esc_attr( $alignment_classes ); ?> <?php echo esc_attr( $container_classes ); ?> text-white">
 											<?php if ( $acf_surtitle ) : ?>
-												<p class="inline-block px-4 py-2 mb-4 text-sm tracking-wider text-white uppercase bg-white/15 backdrop-blur-sm rounded-full border border-white/30 drop-shadow-md">
+												<p class="inline-block px-4 py-2 mb-4 text-xs tracking-wider text-white uppercase bg-white/15 backdrop-blur-sm rounded-full border border-white/30 drop-shadow-md">
 													<?php echo esc_html( $acf_surtitle ); ?>
 												</p>
 											<?php endif; ?>
