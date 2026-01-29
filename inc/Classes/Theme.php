@@ -12,6 +12,7 @@ class Theme {
         add_filter( 'theme_page_templates', [ $this, 'register_page_templates' ] );
         add_filter( 'page_template', [ $this, 'load_custom_page_template' ] );
         add_filter( 'use_block_editor_for_post_type', [ $this, 'disable_gutenberg_for_pages' ], 10, 2 );
+        add_action( 'admin_menu', [ $this, 'hide_admin_menus_for_non_admins' ], 999 );
     }
 
     public function setup() {
@@ -108,5 +109,27 @@ class Theme {
         }
 
         return $template;
+    }
+
+    /**
+     * Hide admin menus for non-admin users
+     */
+    public function hide_admin_menus_for_non_admins(): void {
+        if ( current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        // Articles
+        remove_menu_page( 'edit.php' );
+
+        // Commentaires
+        remove_menu_page( 'edit-comments.php' );
+
+        // Outils
+        remove_menu_page( 'tools.php' );
+
+        // Yoast SEO
+        remove_menu_page( 'wpseo_dashboard' );
+        remove_menu_page( 'wpseo_workouts' );
     }
 }
