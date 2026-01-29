@@ -8,13 +8,7 @@
 
 // Empêcher l'accès direct
 if (!defined('ABSPATH')) {
-    // Si accès direct, charger WordPress
-    require_once dirname(__FILE__) . '/../../../../wp-load.php';
-}
-
-// Vérifier les permissions admin
-if (!current_user_can('manage_options')) {
-    wp_die('Accès non autorisé');
+    exit('Accès direct non autorisé');
 }
 
 /**
@@ -444,6 +438,11 @@ function lunivers_run_itineraires_import(): array
 
 // Interface d'administration
 if (isset($_GET['page']) && $_GET['page'] === 'import-itineraires') {
+    // Vérifier les permissions admin
+    if (!current_user_can('manage_options')) {
+        wp_die('Accès non autorisé');
+    }
+
     // Exécuter l'import si demandé
     $import_results = null;
     if (isset($_POST['run_import']) && wp_verify_nonce($_POST['_wpnonce'], 'import_itineraires')) {
