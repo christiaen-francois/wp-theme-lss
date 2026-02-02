@@ -267,6 +267,45 @@ get_header();
 									<!-- Honeypot pour la protection anti-spam -->
 									<input type="text" name="website" value="" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
 
+									<!-- Type de demande -->
+									<div data-request-type-selector>
+										<fieldset>
+											<legend class="block text-sm font-semibold text-brown-950 mb-3">
+												<?php esc_html_e( 'Type de demande', 'lunivers-theme' ); ?>
+												<span class="text-red-500" aria-label="<?php esc_attr_e( 'requis', 'lunivers-theme' ); ?>">*</span>
+											</legend>
+											<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+												<label class="relative flex items-center p-4 border-2 border-neutral-200 rounded-lg cursor-pointer hover:border-primary-300 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50">
+													<input
+														type="radio"
+														name="request_type"
+														value="devis"
+														checked
+														class="w-4 h-4 text-primary-500 border-neutral-300 focus:ring-primary-500"
+														data-request-type
+													>
+													<span class="ml-3">
+														<span class="block font-semibold text-brown-950"><?php esc_html_e( 'Demander un devis', 'lunivers-theme' ); ?></span>
+														<span class="block text-sm text-brown-600"><?php esc_html_e( 'Safari sur mesure', 'lunivers-theme' ); ?></span>
+													</span>
+												</label>
+												<label class="relative flex items-center p-4 border-2 border-neutral-200 rounded-lg cursor-pointer hover:border-primary-300 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50">
+													<input
+														type="radio"
+														name="request_type"
+														value="question"
+														class="w-4 h-4 text-primary-500 border-neutral-300 focus:ring-primary-500"
+														data-request-type
+													>
+													<span class="ml-3">
+														<span class="block font-semibold text-brown-950"><?php esc_html_e( 'Poser une question', 'lunivers-theme' ); ?></span>
+														<span class="block text-sm text-brown-600"><?php esc_html_e( 'Renseignements généraux', 'lunivers-theme' ); ?></span>
+													</span>
+												</label>
+											</div>
+										</fieldset>
+									</div>
+
 									<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 										<!-- Prénom -->
 										<div>
@@ -335,23 +374,26 @@ get_header();
 										</div>
 									</div>
 
-									<!-- Objet -->
-									<div>
-										<label for="subject" class="block text-sm font-semibold text-brown-950 mb-2">
-											<?php esc_html_e( 'Objet', 'lunivers-theme' ); ?>
-											<span class="text-red-500" aria-label="<?php esc_attr_e( 'requis', 'lunivers-theme' ); ?>">*</span>
-										</label>
-										<input
-											type="text"
-											id="subject"
-											name="subject"
-											required
-											class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-											aria-required="true"
-										>
+									<!-- Champs pour question (masqués par défaut) -->
+									<div data-question-fields class="hidden space-y-6">
+										<!-- Objet -->
+										<div>
+											<label for="subject" class="block text-sm font-semibold text-brown-950 mb-2">
+												<?php esc_html_e( 'Objet de votre question', 'lunivers-theme' ); ?>
+												<span class="text-red-500" aria-label="<?php esc_attr_e( 'requis', 'lunivers-theme' ); ?>">*</span>
+											</label>
+											<input
+												type="text"
+												id="subject"
+												name="subject"
+												class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+											>
+										</div>
 									</div>
 
-								<!-- Détails du séjour -->
+									<!-- Champs pour devis (visibles par défaut) -->
+									<div data-devis-fields class="space-y-6">
+										<!-- Détails du séjour -->
 								<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 									<!-- Nombre de nuits -->
 									<div>
@@ -448,6 +490,8 @@ get_header();
 										</div>
 									</fieldset>
 								</div>
+									</div>
+									<!-- Fin des champs devis -->
 
 									<!-- Message -->
 									<div>

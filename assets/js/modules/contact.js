@@ -9,13 +9,78 @@ export function initContactForm() {
     return;
   }
 
+  // Éléments pour le type de demande
+  const requestTypeInputs = form.querySelectorAll("[data-request-type]");
+  const questionFields = form.querySelector("[data-question-fields]");
+  const devisFields = form.querySelector("[data-devis-fields]");
+  const subjectField = form.querySelector('[name="subject"]');
+
+  // Initialiser l'affichage conditionnel
+  if (requestTypeInputs.length > 0) {
+    initRequestTypeToggle();
+  }
+
   // Pré-remplir le champ subject depuis l'URL
   const urlParams = new URLSearchParams(window.location.search);
   const subjectParam = urlParams.get('subject');
-  if (subjectParam) {
-    const subjectField = form.querySelector('[name="subject"]');
-    if (subjectField) {
-      subjectField.value = decodeURIComponent(subjectParam);
+  if (subjectParam && subjectField) {
+    subjectField.value = decodeURIComponent(subjectParam);
+    // Si un sujet est passé en URL, basculer vers "question"
+    const questionRadio = form.querySelector('[data-request-type][value="question"]');
+    if (questionRadio) {
+      questionRadio.checked = true;
+      updateFieldsVisibility('question');
+    }
+  }
+
+  /**
+   * Initialise le toggle type de demande
+   */
+  function initRequestTypeToggle() {
+    requestTypeInputs.forEach((input) => {
+      input.addEventListener("change", (e) => {
+        updateFieldsVisibility(e.target.value);
+      });
+    });
+
+    // Appliquer l'état initial
+    const checkedInput = form.querySelector("[data-request-type]:checked");
+    if (checkedInput) {
+      updateFieldsVisibility(checkedInput.value);
+    }
+  }
+
+  /**
+   * Met à jour la visibilité des champs selon le type de demande
+   */
+  function updateFieldsVisibility(type) {
+    if (type === "question") {
+      // Afficher les champs question, masquer les champs devis
+      if (questionFields) {
+        questionFields.classList.remove("hidden");
+      }
+      if (devisFields) {
+        devisFields.classList.add("hidden");
+      }
+      // Le champ subject devient obligatoire
+      if (subjectField) {
+        subjectField.setAttribute("required", "");
+        subjectField.setAttribute("aria-required", "true");
+      }
+    } else {
+      // Masquer les champs question, afficher les champs devis
+      if (questionFields) {
+        questionFields.classList.add("hidden");
+      }
+      if (devisFields) {
+        devisFields.classList.remove("hidden");
+      }
+      // Le champ subject n'est plus obligatoire et aura une valeur par défaut
+      if (subjectField) {
+        subjectField.removeAttribute("required");
+        subjectField.removeAttribute("aria-required");
+        subjectField.value = ""; // Sera remplacé par la valeur par défaut à la soumission
+      }
     }
   }
 
@@ -57,6 +122,12 @@ export function initContactForm() {
       const formData = new FormData(form);
       formData.append("action", "nl_contact_form");
 
+      // Si c'est une demande de devis et que le subject est vide, définir la valeur par défaut
+      const requestType = form.querySelector("[data-request-type]:checked")?.value;
+      if (requestType === "devis" && !formData.get("subject")) {
+        formData.set("subject", "Demande de devis safari");
+      }
+
       const response = await fetch(window.ajaxurl || "/wp-admin/admin-ajax.php", {
         method: "POST",
         body: formData,
@@ -68,6 +139,12 @@ export function initContactForm() {
         showSuccess(data.data.message || "Votre message a été envoyé avec succès.");
         form.reset();
         clearAllErrors();
+        // Rétablir l'état initial (devis par défaut)
+        const devisRadio = form.querySelector('[data-request-type][value="devis"]');
+        if (devisRadio) {
+          devisRadio.checked = true;
+          updateFieldsVisibility('devis');
+        }
       } else {
         // Afficher les erreurs de validation
         if (data.data?.errors) {
@@ -91,6 +168,13 @@ export function initContactForm() {
     const value = field.value.trim();
     let isValid = true;
     let errorMessage = "";
+
+    // Ne pas valider les champs dans un conteneur caché
+    const hiddenParent = field.closest(".hidden");
+    if (hiddenParent) {
+      clearFieldError(field);
+      return true;
+    }
 
     // Vérifier les champs requis
     if (field.hasAttribute("required") && !value) {
