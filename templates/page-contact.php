@@ -351,6 +351,104 @@ get_header();
 										>
 									</div>
 
+								<!-- Détails du séjour -->
+								<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+									<!-- Nombre de nuits -->
+									<div>
+										<label for="nights" class="block text-sm font-semibold text-brown-950 mb-2">
+											<?php esc_html_e( 'Nombre de nuits', 'lunivers-theme' ); ?>
+										</label>
+										<select
+											id="nights"
+											name="nights"
+											class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors bg-white"
+										>
+											<option value=""><?php esc_html_e( 'Sélectionner', 'lunivers-theme' ); ?></option>
+											<option value="3-5"><?php esc_html_e( '3-5 nuits', 'lunivers-theme' ); ?></option>
+											<option value="6-8"><?php esc_html_e( '6-8 nuits', 'lunivers-theme' ); ?></option>
+											<option value="9-12"><?php esc_html_e( '9-12 nuits', 'lunivers-theme' ); ?></option>
+											<option value="12+"><?php esc_html_e( 'Plus de 12 nuits', 'lunivers-theme' ); ?></option>
+										</select>
+									</div>
+
+									<!-- Nombre d'adultes -->
+									<div>
+										<label for="adults" class="block text-sm font-semibold text-brown-950 mb-2">
+											<?php esc_html_e( 'Adultes', 'lunivers-theme' ); ?>
+										</label>
+										<select
+											id="adults"
+											name="adults"
+											class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors bg-white"
+										>
+											<option value=""><?php esc_html_e( 'Sélectionner', 'lunivers-theme' ); ?></option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6+">6+</option>
+										</select>
+									</div>
+
+									<!-- Nombre d'enfants -->
+									<div>
+										<label for="children" class="block text-sm font-semibold text-brown-950 mb-2">
+											<?php esc_html_e( 'Enfants (0-12 ans)', 'lunivers-theme' ); ?>
+										</label>
+										<select
+											id="children"
+											name="children"
+											class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors bg-white"
+										>
+											<option value="0">0</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4+">4+</option>
+										</select>
+									</div>
+								</div>
+
+								<!-- Zanzibar -->
+								<div>
+									<fieldset>
+										<legend class="block text-sm font-semibold text-brown-950 mb-3">
+											<?php esc_html_e( 'Souhaitez-vous un séjour balnéaire à Zanzibar ?', 'lunivers-theme' ); ?>
+										</legend>
+										<div class="flex flex-wrap gap-4">
+											<label class="flex items-center gap-2 cursor-pointer">
+												<input
+													type="radio"
+													name="zanzibar"
+													value="yes"
+													class="w-4 h-4 text-primary-500 border-neutral-300 focus:ring-primary-500"
+												>
+												<span class="text-brown-700"><?php esc_html_e( 'Oui', 'lunivers-theme' ); ?></span>
+											</label>
+											<label class="flex items-center gap-2 cursor-pointer">
+												<input
+													type="radio"
+													name="zanzibar"
+													value="no"
+													class="w-4 h-4 text-primary-500 border-neutral-300 focus:ring-primary-500"
+												>
+												<span class="text-brown-700"><?php esc_html_e( 'Non', 'lunivers-theme' ); ?></span>
+											</label>
+											<label class="flex items-center gap-2 cursor-pointer">
+												<input
+													type="radio"
+													name="zanzibar"
+													value="maybe"
+													checked
+													class="w-4 h-4 text-primary-500 border-neutral-300 focus:ring-primary-500"
+												>
+												<span class="text-brown-700"><?php esc_html_e( 'Je ne sais pas encore', 'lunivers-theme' ); ?></span>
+											</label>
+										</div>
+									</fieldset>
+								</div>
+
 									<!-- Message -->
 									<div>
 										<label for="message" class="block text-sm font-semibold text-brown-950 mb-2">
