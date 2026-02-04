@@ -175,6 +175,12 @@ function lunivers_render_layout_texte_image( $layout ) {
 	$format_image = $layout['format_image'] ?? 'paysage';
 	$espacement   = $layout['espacement'] ?? 'top';
 
+	// Configuration des pattes de lion
+	$pattes_activer   = $layout['pattes_activer'] ?? false;
+	$patte_1          = $layout['patte_1'] ?? [];
+	$patte_2_activer  = $layout['patte_2_activer'] ?? false;
+	$patte_2          = $layout['patte_2'] ?? [];
+
 	if ( ! $contenu ) {
 		return;
 	}
@@ -188,7 +194,19 @@ function lunivers_render_layout_texte_image( $layout ) {
 	$image_classes = $position === 'right' ? 'md:order-2' : 'md:order-1';
 	$text_classes  = $position === 'right' ? 'md:order-1' : 'md:order-2';
 	?>
-	<section class="layout-texte-image <?php echo esc_attr( $spacing_class ); ?> <?php echo esc_attr( $colors['bg'] ); ?>">
+	<section class="layout-texte-image relative overflow-hidden <?php echo esc_attr( $spacing_class ); ?> <?php echo esc_attr( $colors['bg'] ); ?>">
+		<?php
+		// Afficher les pattes de lion décoratives
+		if ( $pattes_activer ) {
+			get_template_part( 'template-parts/decorations/lion-paw', null, [
+				'enabled'        => $pattes_activer,
+				'image_position' => $position,
+				'paw_1'          => $patte_1,
+				'paw_2_enabled'  => $patte_2_activer,
+				'paw_2'          => $patte_2,
+			] );
+		}
+		?>
 		<div class="container mx-auto px-4">
 			<?php if ( $has_image ) : ?>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">

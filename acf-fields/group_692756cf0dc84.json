@@ -220,6 +220,33 @@
               "layout": "block",
               "prefix_label": 0,
               "prefix_name": 0
+            },
+            {
+              "key": "field_texte_image_pattes_clone",
+              "label": "",
+              "name": "",
+              "aria-label": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_common_pattes_lion",
+                "field_common_pattes_activer",
+                "field_common_patte_1",
+                "field_common_patte_2_activer",
+                "field_common_patte_2",
+                "field_common_pattes_endpoint"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
             }
           ],
           "min": "",

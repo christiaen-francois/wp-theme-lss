@@ -114,6 +114,310 @@
       "ui": 0,
       "ajax": 0,
       "placeholder": ""
+    },
+    {
+      "key": "field_common_pattes_lion",
+      "label": "Pattes de lion",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 0,
+      "multi_expand": 0,
+      "endpoint": 0
+    },
+    {
+      "key": "field_common_pattes_activer",
+      "label": "Afficher des pattes de lion",
+      "name": "pattes_activer",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Active l'affichage de pattes de lion décoratives avec effet parallax",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": 0,
+      "ui": 1,
+      "message": "",
+      "ui_on_text": "Oui",
+      "ui_off_text": "Non"
+    },
+    {
+      "key": "field_common_patte_1",
+      "label": "Patte 1",
+      "name": "patte_1",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_common_pattes_activer",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "row",
+      "sub_fields": [
+        {
+          "key": "field_patte_1_position",
+          "label": "Position",
+          "name": "position",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "Position de la patte (auto = inverse de l'image)",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "33",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "auto": "Auto (inverse image)",
+            "top-left": "Haut gauche",
+            "top-right": "Haut droite",
+            "bottom-left": "Bas gauche",
+            "bottom-right": "Bas droite"
+          },
+          "default_value": "auto",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_patte_1_taille",
+          "label": "Taille",
+          "name": "taille",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "33",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "sm": "Petite",
+            "md": "Moyenne",
+            "lg": "Grande"
+          },
+          "default_value": "md",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_patte_1_couleur",
+          "label": "Couleur",
+          "name": "couleur",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "34",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "primary": "Primaire (doré)",
+            "neutral": "Neutre (gris)"
+          },
+          "default_value": "primary",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        }
+      ]
+    },
+    {
+      "key": "field_common_patte_2_activer",
+      "label": "Ajouter une 2ème patte",
+      "name": "patte_2_activer",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_common_pattes_activer",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": 0,
+      "ui": 1,
+      "message": "",
+      "ui_on_text": "Oui",
+      "ui_off_text": "Non"
+    },
+    {
+      "key": "field_common_patte_2",
+      "label": "Patte 2",
+      "name": "patte_2",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_common_pattes_activer",
+            "operator": "==",
+            "value": "1"
+          },
+          {
+            "field": "field_common_patte_2_activer",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "row",
+      "sub_fields": [
+        {
+          "key": "field_patte_2_position",
+          "label": "Position",
+          "name": "position",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "33",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "top-left": "Haut gauche",
+            "top-right": "Haut droite",
+            "bottom-left": "Bas gauche",
+            "bottom-right": "Bas droite"
+          },
+          "default_value": "bottom-right",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_patte_2_taille",
+          "label": "Taille",
+          "name": "taille",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "33",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "sm": "Petite",
+            "md": "Moyenne",
+            "lg": "Grande"
+          },
+          "default_value": "sm",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_patte_2_couleur",
+          "label": "Couleur",
+          "name": "couleur",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "34",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "primary": "Primaire (doré)",
+            "neutral": "Neutre (gris)"
+          },
+          "default_value": "primary",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        }
+      ]
+    },
+    {
+      "key": "field_common_pattes_endpoint",
+      "label": "",
+      "name": "",
+      "aria-label": "",
+      "type": "accordion",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "open": 0,
+      "multi_expand": 0,
+      "endpoint": 1
     }
   ],
   "location": [

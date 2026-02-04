@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="currentColor">
+  <!-- Coussinet principal (forme de coeur inversé) -->
+  <path d="M50 45c-18 0-32 14-32 32 0 22 14 38 32 38s32-16 32-38c0-18-14-32-32-32z"/>
+
+  <!-- Coussinets des orteils -->
+  <!-- Orteil gauche extérieur -->
+  <ellipse cx="20" cy="22" rx="12" ry="15" transform="rotate(-15 20 22)"/>
+
+  <!-- Orteil gauche intérieur -->
+  <ellipse cx="38" cy="12" rx="11" ry="14" transform="rotate(-5 38 12)"/>
+
+  <!-- Orteil droit intérieur -->
+  <ellipse cx="62" cy="12" rx="11" ry="14" transform="rotate(5 62 12)"/>
+
+  <!-- Orteil droit extérieur -->
+  <ellipse cx="80" cy="22" rx="12" ry="15" transform="rotate(15 80 22)"/>
+</svg>

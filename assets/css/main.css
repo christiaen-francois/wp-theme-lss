@@ -151,6 +151,10 @@
     counter-increment: list-counter;
   }
 
+  .layout-hero ol ul {
+    counter-reset: list-counter;
+  }
+
   .layout-texte-image ol li::before,
   .layout-guide-pratique ol li::before,
   .layout-faq ol li::before,
