@@ -140,6 +140,14 @@
     padding-left: 0;
     counter-reset: list-counter;
   }
+  .layout-texte-image ol ul,
+  .layout-guide-pratique ol ul,
+  .layout-faq ol ul,
+  .layout-cta ol ul,
+  .layout-services ol ul,
+  .layout-hero ol ul {
+    counter-reset: list-counter !important;
+  }
 
   .layout-texte-image ol li,
   .layout-guide-pratique ol li,
@@ -149,10 +157,6 @@
   .layout-hero ol li {
     @apply relative pl-10;
     counter-increment: list-counter;
-  }
-
-  .layout-hero ol ul {
-    counter-reset: list-counter;
   }
 
   .layout-texte-image ol li::before,
