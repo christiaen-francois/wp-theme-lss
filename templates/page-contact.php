@@ -532,6 +532,20 @@ get_header();
 										</label>
 									</div>
 
+									<!-- Newsletter opt-in -->
+									<div class="flex items-start gap-3">
+										<input
+											type="checkbox"
+											id="newsletter_optin"
+											name="newsletter_optin"
+											value="1"
+											class="mt-1 w-4 h-4 text-primary-500 border-neutral-300 rounded focus:ring-primary-500"
+										>
+										<label for="newsletter_optin" class="text-sm text-brown-700">
+											<?php esc_html_e( 'Je souhaite recevoir les inspirations safari, conseils de voyage et nouveautés de Lion Select Safaris.', 'lunivers-theme' ); ?>
+										</label>
+									</div>
+
 									<!-- Bouton d'envoi -->
 									<div class="text-center">
 										<button

@@ -59,6 +59,9 @@ class Newsletter {
 			] );
 		}
 
+		// Add contact to Brevo
+		$brevo_success = self::add_to_brevo( $email );
+
 		// Send emails
 		$notification_sent = $this->send_notification_email( $email );
 		$thank_you_sent    = $this->send_thank_you_email( $email );
@@ -70,9 +73,68 @@ class Newsletter {
 		}
 
 		// Success response
+		$message = __( 'Merci pour votre inscription ! Vous recevrez bientôt nos actualités.', 'lunivers-theme' );
+
 		wp_send_json_success( [
-			'message' => __( 'Merci pour votre inscription ! Vous recevrez bientôt nos actualités.', 'lunivers-theme' ),
+			'message' => $message,
+			'brevo'   => $brevo_success,
 		] );
+	}
+
+	/**
+	 * Add contact to Brevo via API
+	 *
+	 * @param string $email      Email address
+	 * @param array  $attributes Optional Brevo contact attributes (FIRSTNAME, LASTNAME, etc.)
+	 * @return bool True if contact was added successfully
+	 */
+	public static function add_to_brevo( string $email, array $attributes = [] ): bool {
+		if ( ! defined( 'BREVO_API_KEY' ) || empty( BREVO_API_KEY ) ) {
+			error_log( '[Lion Select Safaris] Brevo API key not configured.' );
+			return false;
+		}
+
+		$list_id = defined( 'BREVO_LIST_ID' ) ? (int) BREVO_LIST_ID : 2;
+
+		$response = wp_remote_post( 'https://api.brevo.com/v3/contacts', [
+			'headers' => [
+				'accept'       => 'application/json',
+				'content-type' => 'application/json',
+				'api-key'      => BREVO_API_KEY,
+			],
+			'body'    => wp_json_encode( array_filter( [
+				'email'            => $email,
+				'listIds'          => [ $list_id ],
+				'updateEnabled'    => true,
+				'attributes'       => ! empty( $attributes ) ? $attributes : null,
+			] ) ),
+			'timeout' => 15,
+		] );
+
+		if ( is_wp_error( $response ) ) {
+			error_log( '[Lion Select Safaris] Brevo API error: ' . $response->get_error_message() );
+			return false;
+		}
+
+		$code = wp_remote_retrieve_response_code( $response );
+
+		// 201 = created, 204 = updated (already exists)
+		if ( $code === 201 || $code === 204 ) {
+			return true;
+		}
+
+		$body = wp_remote_retrieve_body( $response );
+		error_log( '[Lion Select Safaris] Brevo API unexpected response (HTTP ' . $code . '): ' . $body );
+
+		// Contact already exists with "duplicate_parameter" is not a failure
+		if ( $code === 400 ) {
+			$decoded = json_decode( $body, true );
+			if ( isset( $decoded['code'] ) && $decoded['code'] === 'duplicate_parameter' ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**

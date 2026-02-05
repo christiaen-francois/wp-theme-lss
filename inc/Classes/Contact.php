@@ -45,8 +45,9 @@ class Contact {
 		$adults       = isset( $_POST['adults'] ) ? sanitize_text_field( wp_unslash( $_POST['adults'] ) ) : '';
 		$children     = isset( $_POST['children'] ) ? sanitize_text_field( wp_unslash( $_POST['children'] ) ) : '';
 		$zanzibar     = isset( $_POST['zanzibar'] ) ? sanitize_text_field( wp_unslash( $_POST['zanzibar'] ) ) : '';
-		$message      = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
-		$rgpd         = isset( $_POST['rgpd'] ) && '1' === $_POST['rgpd'];
+		$message          = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+		$rgpd             = isset( $_POST['rgpd'] ) && '1' === $_POST['rgpd'];
+		$newsletter_optin = isset( $_POST['newsletter_optin'] ) && '1' === $_POST['newsletter_optin'];
 
 		// Définir le sujet par défaut pour les demandes de devis
 		if ( 'devis' === $request_type && empty( $subject ) ) {
@@ -116,6 +117,14 @@ class Contact {
 		if ( ! $email_sent || ! $thank_you_sent ) {
 			wp_send_json_error( [
 				'message' => __( 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer plus tard.', 'lunivers-theme' ),
+			] );
+		}
+
+		// Add to Brevo newsletter list if opted in
+		if ( $newsletter_optin ) {
+			Newsletter::add_to_brevo( $email, [
+				'FIRSTNAME' => $first_name,
+				'LASTNAME'  => $last_name,
 			] );
 		}
 
