@@ -261,7 +261,7 @@ class Contact {
 
 		$headers = [
 			'Content-Type: text/html; charset=UTF-8',
-			'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>',
+			'From: ' . get_bloginfo( 'name' ) . ' <info@lionselectsafaris.com>',
 			'Reply-To: ' . $first_name . ' ' . $last_name . ' <' . $email . '>',
 		];
 
