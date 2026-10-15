@@ -101,6 +101,17 @@ class Contact {
 			] );
 		}
 
+		// Provenance : IP + navigateur (traçabilité / anti-fraude).
+		$ip         = Contact_Log::get_client_ip();
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+
+		// Rate limiting : max MAX_PER_WINDOW demandes par IP sur RATE_WINDOW.
+		if ( $this->is_rate_limited( $ip ) ) {
+			wp_send_json_error( [
+				'message' => __( 'Vous avez envoyé trop de demandes récemment. Merci de réessayer plus tard.', 'lunivers-theme' ),
+			] );
+		}
+
 		// Préparer les données du séjour pour l'email
 		$trip_data = [
 			'request_type' => $request_type,
@@ -109,6 +120,25 @@ class Contact {
 			'children'     => $children,
 			'zanzibar'     => $zanzibar,
 		];
+
+		// Enregistrer la demande dans le journal (CPT) pour historique / détection de doublons.
+		Contact_Log::store( [
+			'first_name'   => $first_name,
+			'last_name'    => $last_name,
+			'email'        => $email,
+			'phone'        => $phone,
+			'request_type' => $request_type,
+			'subject'      => $subject,
+			'message'      => $message,
+			'trip'         => $trip_data,
+			'newsletter'   => $newsletter_optin,
+			'ip'           => $ip,
+			'user_agent'   => $user_agent,
+		] );
+
+		// Provenance transmise à l'email admin.
+		$trip_data['ip']         = $ip;
+		$trip_data['user_agent'] = $user_agent;
 
 		// Send emails
 		$email_sent = $this->send_notification_email( $first_name, $last_name, $email, $phone, $subject, $message, $trip_data );
@@ -132,6 +162,34 @@ class Contact {
 		wp_send_json_success( [
 			'message' => __( 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.', 'lunivers-theme' ),
 		] );
+	}
+
+	/** Fenêtre de rate limiting (secondes). */
+	const RATE_WINDOW = HOUR_IN_SECONDS;
+
+	/** Nombre max de demandes par IP sur la fenêtre. */
+	const MAX_PER_WINDOW = 5;
+
+	/**
+	 * Rate limiting par IP via transient. Incrémente le compteur.
+	 *
+	 * @param string $ip
+	 * @return bool True si la limite est dépassée.
+	 */
+	private function is_rate_limited( string $ip ): bool {
+		if ( '' === $ip ) {
+			return false; // IP inconnue : ne pas bloquer.
+		}
+
+		$key   = 'lss_cf_rl_' . md5( $ip );
+		$count = (int) get_transient( $key );
+
+		if ( $count >= self::MAX_PER_WINDOW ) {
+			return true;
+		}
+
+		set_transient( $key, $count + 1, self::RATE_WINDOW );
+		return false;
 	}
 
 	/**
@@ -261,6 +319,20 @@ class Contact {
 			'label' => __( 'Message', 'lunivers-theme' ),
 			'value' => $message_html,
 		];
+
+		// Provenance (anti-fraude) : IP + navigateur.
+		if ( ! empty( $trip_data['ip'] ) ) {
+			$fields[] = [
+				'label' => __( 'Adresse IP', 'lunivers-theme' ),
+				'value' => '<code>' . esc_html( $trip_data['ip'] ) . '</code>',
+			];
+		}
+		if ( ! empty( $trip_data['user_agent'] ) ) {
+			$fields[] = [
+				'label' => __( 'Navigateur', 'lunivers-theme' ),
+				'value' => '<span style="font-size:12px;color:#888;">' . esc_html( $trip_data['user_agent'] ) . '</span>',
+			];
+		}
 
 		$body = $this->get_email_template(
 			$email_title,
